@@ -100,6 +100,8 @@ def http_post_json(url: str, payload: dict, headers: dict | None = None, timeout
             return e.code, json.loads(raw)
         except Exception:
             return e.code, {"error": raw.decode(errors="replace")[:500]}
+    except Exception as e:  # timeouts, connection resets, bad JSON
+        return 0, {"error": f"{type(e).__name__}: {e}"[:300]}
 
 
 # ---------------------------------------------------------------- Discovery
@@ -202,15 +204,24 @@ class Google:
         if not self.enabled:
             return out
         if self.calls >= MAX_GOOGLE_INSPECTIONS_PER_RUN:
-            out["status"] = "check_failed"
-            out["detail"] = "per-run inspection cap reached"
+            out["status"] = "pending"
+            out["detail"] = "queued: not yet inspected (per-run cap)"
             return out
         self.calls += 1
         code, data = http_post_json(
             "https://searchconsole.googleapis.com/v1/urlInspection/index:inspect",
             {"inspectionUrl": url, "siteUrl": GSC_PROPERTY, "languageCode": "en-US"},
             headers={"Authorization": f"Bearer {self.token}"},
+            timeout=60,
         )
+        if code == 0:  # network error: retry once
+            time.sleep(5)
+            code, data = http_post_json(
+                "https://searchconsole.googleapis.com/v1/urlInspection/index:inspect",
+                {"inspectionUrl": url, "siteUrl": GSC_PROPERTY, "languageCode": "en-US"},
+                headers={"Authorization": f"Bearer {self.token}"},
+                timeout=60,
+            )
         if code != 200:
             out["status"] = "check_failed"
             out["detail"] = str(data.get("error", data))[:300]
@@ -264,8 +275,8 @@ class Bing:
         if not self.enabled:
             return out
         if self.calls >= MAX_BING_CHECKS_PER_RUN:
-            out["status"] = "check_failed"
-            out["detail"] = "per-run cap reached"
+            out["status"] = "pending"
+            out["detail"] = "queued: not yet checked (per-run cap)"
             return out
         self.calls += 1
         q = urllib.parse.urlencode({"siteUrl": BING_SITE_URL, "url": url, "apikey": BING_API_KEY})
@@ -410,23 +421,33 @@ def main() -> int:
     # 3. Check everything that is due
     due_entries = [e for e in urls_state.values() if due(e) and not e.get("removed_from_sitemap")]
     due_entries.sort(key=lambda e: e["first_seen"], reverse=True)  # newest first
-    for e in due_entries:
+    log(f"{len(due_entries)} URLs due for check")
+    for i, e in enumerate(due_entries, 1):
         url = e["url"]
-        if e.get("precheck") is None or (parse_iso(e["precheck"]["checked_at"]) < NOW - timedelta(days=7)):
-            e["precheck"] = precheck(url)
-        if not e["precheck"]["ok"]:
-            e["google"] = {"status": "blocked", "checked_at": iso(NOW), "detail": e["precheck"]["problem"]}
-            e["bing"] = {**e["bing"], "status": "blocked", "checked_at": iso(NOW), "detail": e["precheck"]["problem"]}
-        else:
-            prev_g, prev_b = e["google"].get("status"), e["bing"].get("status")
-            g = google.inspect(url)
-            b = {**e["bing"], **bing.url_info(url)}
-            e["google"], e["bing"] = g, b
-            for name, prev, cur in (("google", prev_g, g["status"]), ("bing", prev_b, b["status"])):
-                if prev != cur:
-                    e["history"].append({"at": iso(NOW), "event": f"{name}: {prev} -> {cur}"})
+        try:
+            if e.get("precheck") is None or (parse_iso(e["precheck"]["checked_at"]) < NOW - timedelta(days=7)):
+                e["precheck"] = precheck(url)
+            if not e["precheck"]["ok"]:
+                e["google"] = {"status": "blocked", "checked_at": iso(NOW), "detail": e["precheck"]["problem"]}
+                e["bing"] = {**e["bing"], "status": "blocked", "checked_at": iso(NOW), "detail": e["precheck"]["problem"]}
+            else:
+                prev_g, prev_b = e["google"].get("status"), e["bing"].get("status")
+                g = google.inspect(url)
+                b = {**e["bing"], **bing.url_info(url)}
+                e["google"], e["bing"] = g, b
+                for name, prev, cur in (("google", prev_g, g["status"]), ("bing", prev_b, b["status"])):
+                    if prev != cur:
+                        e["history"].append({"at": iso(NOW), "event": f"{name}: {prev} -> {cur}"})
+        except Exception as ex:  # never let one URL abort the run
+            msg = f"{type(ex).__name__}: {ex}"[:200]
+            log(f"check error for {url}: {msg}")
+            e["google"] = {**e["google"], "status": "check_failed", "checked_at": iso(NOW), "detail": msg}
+            e["bing"] = {**e["bing"], "status": "check_failed", "checked_at": iso(NOW), "detail": msg}
         e["next_check"] = iso(next_check_for(e))
         run["checked"] += 1
+        if i % 25 == 0:
+            log(f"  checked {i}/{len(due_entries)} (google calls {google.calls}, bing calls {bing.calls})")
+            save_json(STATE_FILE, state)  # checkpoint
     run["google_calls"], run["bing_calls"] = google.calls, bing.calls
 
     # 4. Escalations: still not indexed after ESCALATE_AFTER_DAYS
