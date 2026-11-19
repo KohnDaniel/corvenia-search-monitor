@@ -1,0 +1,5572 @@
+{
+  "alerts": [],
+  "generated_at": "2026-11-19T16:58:08+00:00",
+  "integrations": {
+    "bing": false,
+    "google": false
+  },
+  "last_run": {
+    "bing_calls": 0,
+    "bing_submitted": 0,
+    "changed": 0,
+    "checked": 191,
+    "discovered": 191,
+    "errors": [],
+    "finished": "2026-11-19T16:58:08+00:00",
+    "google_calls": 0,
+    "new": 191,
+    "removed": 0,
+    "started": "2026-11-19T16:57:44+00:00"
+  },
+  "site": "https://www.corvenia.com",
+  "summary": {
+    "bing": {
+      "unknown": 191
+    },
+    "google": {
+      "unknown": 191
+    }
+  },
+  "total_urls": 191,
+  "urls": [
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/sv-se"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/no-no"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/sv-se/about"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/no-no/about"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/about"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/sv-se/requestdemo"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/no-no/requestdemo"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/requestdemo"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/sv-se/contact"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/no-no/contact"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/contact"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/sv-se/terms-of-use"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/no-no/terms-of-use"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/terms-of-use"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/sv-se/privacy"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/no-no/privacy"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/privacy"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/sv-se/dpa"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/no-no/dpa"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/dpa"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/sv-se/evaluation"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/no-no/evaluation"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/evaluation"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/sv-se/private-equity"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/no-no/private-equity"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/private-equity"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/sv-se/family-office"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/no-no/family-office"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/family-office"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/sv-se/real-estate"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/no-no/real-estate"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/real-estate"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/sv-se/insight"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/no-no/insight"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/insight"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/sv-se/faq"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/no-no/faq"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/faq"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/sv-se/multi-entity-group"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/no-no/multi-entity-group"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/multi-entity-group"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/sv-se/email-assets"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/no-no/email-assets"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/email-assets"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/sv-se/investor-relations"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/no-no/investor-relations"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/investor-relations"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/sv-se/signup"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/no-no/signup"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/signup"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/sv-se/press-releases"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/no-no/press-releases"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/press-releases"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/sv-se/pricing"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/no-no/pricing"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/pricing"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/sv-se/signup-failed"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/no-no/signup-failed"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/signup-failed"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/sv-se/press-release"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/no-no/press-release"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/press-release"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/sv-se/news"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/no-no/news"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/news"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/sv-se/case-studies"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/no-no/case-studies"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/case-studies"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/sv-se/group-intelligence-assessment"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/no-no/group-intelligence-assessment"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/group-intelligence-assessment"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/sv-se/built-for-trust"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/no-no/built-for-trust"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/built-for-trust"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/sv-se/videoarkiv"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/no-no/videoarkiv"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/videoarkiv"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/post/5-reasons-your-financial-data-needs-an-independent-layer"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/no-no/post/5-reasons-your-financial-data-needs-an-independent-layer"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/sv-se/post/5-reasons-your-financial-data-needs-an-independent-layer"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/no-no/post/agentic-ai-is-powerful-the-data-underneath-it-is-not-ready"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/post/agentic-ai-is-powerful-the-data-underneath-it-is-not-ready"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/sv-se/post/agentic-ai-is-powerful-the-data-underneath-it-is-not-ready"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/no-no/post/ai-driven-intercompany-eliminations-group-consolidation"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/sv-se/post/ai-driven-intercompany-eliminations-group-consolidation"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/post/ai-driven-intercompany-eliminations-group-consolidation"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/no-no/post/ai-raised-the-floor-for-group-finance-not-the-ceiling"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/post/ai-raised-the-floor-for-group-finance-not-the-ceiling"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/sv-se/post/ai-raised-the-floor-for-group-finance-not-the-ceiling"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/post/case-study-qben-infra-reduced-consolidation-effort-by-95-across-40-subsidiaries---without-changing-a-single-erp"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/sv-se/post/case-study-qben-infra-reduced-consolidation-effort-by-95-across-40-subsidiaries---without-changing-a-single-erp"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/no-no/post/case-study-qben-infra-reduced-consolidation-effort-by-95-across-40-subsidiaries---without-changing-a-single-erp"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/no-no/post/consolidation-is-just-the-starting-point"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/sv-se/post/consolidation-is-just-the-starting-point"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/post/consolidation-is-just-the-starting-point"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/no-no/post/corvenia-henter-inn-17-millioner-svenske-kroner-for-a-etablere-neste-generasjons-plattform-for-konsernstyring-k4j02"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/sv-se/post/corvenia-henter-inn-17-millioner-svenske-kroner-for-a-etablere-neste-generasjons-plattform-for-konsernstyring-k4j02"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/post/corvenia-henter-inn-17-millioner-svenske-kroner-for-a-etablere-neste-generasjons-plattform-for-konsernstyring-k4j02"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/post/corvenia-introduces-ai-agents-for-recurring-analysis-and-reporting"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/no-no/post/corvenia-introduces-ai-agents-for-recurring-analysis-and-reporting-read-full-press-release-in-se"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/sv-se/post/corvenia-introduces-ai-agents-for-recurring-analysis-and-reporting-read-full-press-release-in-se"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/no-no/post/corvenia-kallar-till-extra-bolagsstamma---foreslar-fyra-nya-styrelseledamoter-read-full-press-release-in-eng"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/sv-se/post/corvenia-kallar-till-extra-bolagsstamma---foreslar-fyra-nya-styrelseledamoter-read-full-press-release-in-eng"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/post/corvenia-kallar-till-extra-bolagsstamma---foreslar-fyra-nya-styrelseledamoter-read-full-press-release-in-eng"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/post/dackverket-expands-agreement-with-corvenia---from-group-reporting-to-operational-control-2gpgx"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/no-no/post/dackverket-expands-agreement-with-corvenia---from-group-reporting-to-operational-control-2gpgx"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/sv-se/post/dackverket-expands-agreement-with-corvenia---from-group-reporting-to-operational-control-2gpgx"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/no-no/post/eleda-rail-has-moved-from-pilot-to-long-term-subscription-with-corvenia-lg9nt"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/sv-se/post/eleda-rail-has-moved-from-pilot-to-long-term-subscription-with-corvenia-lg9nt"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/post/eleda-rail-has-moved-from-pilot-to-long-term-subscription-with-corvenia-lg9nt"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/sv-se/post/financial-control-across-a-multi-entity-group-is-not-one-problem-it-is-four"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/no-no/post/financial-control-across-a-multi-entity-group-is-not-one-problem-it-is-four"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/post/financial-control-across-a-multi-entity-group-is-not-one-problem-it-is-four"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/post/from-30-to-100-million-init4u-bets-on-corvenias-ai-to-give-clients-smarter-financial-control"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/sv-se/post/from-30-to-100-million-init4u-bets-on-corvenias-ai-to-give-clients-smarter-financial-control"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/no-no/post/from-30-to-100-million-init4u-bets-on-corvenias-ai-to-give-clients-smarter-financial-control"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/sv-se/post/linx-equitys-cube-storage-platform-has-moved-from-pilot-to-long-term-subscription-with-corvenia"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/no-no/post/linx-equitys-cube-storage-platform-has-moved-from-pilot-to-long-term-subscription-with-corvenia"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/post/linx-equitys-cube-storage-platform-has-moved-from-pilot-to-long-term-subscription-with-corvenia"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/post/month-end-close-is-not-a-process-problem-it-is-an-architecture-problem"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/no-no/post/month-end-close-is-not-a-process-problem-it-is-an-architecture-problem"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/sv-se/post/month-end-close-is-not-a-process-problem-it-is-an-architecture-problem"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/sv-se/post/pe-demands-operational-genius-but-portco-finance-runs-on-guesswork"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/no-no/post/pe-demands-operational-genius-but-portco-finance-runs-on-guesswork"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/post/pe-demands-operational-genius-but-portco-finance-runs-on-guesswork"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/post/strategic-financial-consolidation-in-real-estate"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/sv-se/post/strategic-financial-consolidation-in-real-estate"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/no-no/post/strategic-financial-consolidation-in-real-estate"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/post/the-field-generals-mandate-crushing-the-ebitda-mirage-with-ai-transparency"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/sv-se/post/the-field-generals-mandate-crushing-the-ebitda-mirage-with-ai-transparency"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/no-no/post/the-field-generals-mandate-crushing-the-ebitda-mirage-with-ai-transparency"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/post/the-finance-function-has-always-had-the-ambition-to-be-strategic-the-data-work-got-in-the-way"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/sv-se/post/the-finance-function-has-always-had-the-ambition-to-be-strategic-the-data-work-got-in-the-way"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/no-no/post/the-finance-function-has-always-had-the-ambition-to-be-strategic-the-data-work-got-in-the-way"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/post/the-great-inversion-why-ceos-must-pivot-to-operational-alpha-to-solve-the-3-trillion-exit-crisis"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/no-no/post/the-great-inversion-why-ceos-must-pivot-to-operational-alpha-to-solve-the-3-trillion-exit-crisis"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/sv-se/post/the-great-inversion-why-ceos-must-pivot-to-operational-alpha-to-solve-the-3-trillion-exit-crisis"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/no-no/post/the-hidden-cost-of-management-control-why-implementation-speed-determines-roi"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/post/the-hidden-cost-of-management-control-why-implementation-speed-determines-roi"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/sv-se/post/the-hidden-cost-of-management-control-why-implementation-speed-determines-roi"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/post/why-is-reporting-ai-inherently-more-complex-than-accounting-ai"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/sv-se/post/why-is-reporting-ai-inherently-more-complex-than-accounting-ai"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/no-no/post/why-is-reporting-ai-inherently-more-complex-than-accounting-ai"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/post/why-private-equity-needs-operational-alpha-now-longer-holds-locked-up-capital-and-the-new-value-imperative"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/no-no/post/why-private-equity-needs-operational-alpha-now-longer-holds-locked-up-capital-and-the-new-value-imperative"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/sv-se/post/why-private-equity-needs-operational-alpha-now-longer-holds-locked-up-capital-and-the-new-value-imperative"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/no-no/post/your-ai-can-produce-a-number-can-it-show-you-where-it-came-from"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/sv-se/post/your-ai-can-produce-a-number-can-it-show-you-where-it-came-from"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/post/your-ai-can-produce-a-number-can-it-show-you-where-it-came-from"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/no-no/insight-items/part-1-nobody-remembers-the-moment-their-reporting-setup-stopped-working"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/sv-se/insight-items/part-1-nobody-remembers-the-moment-their-reporting-setup-stopped-working"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/insight-items/part-1-nobody-remembers-the-moment-their-reporting-setup-stopped-working"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/no-no/insight-items/part-2-five-signs-your-group-has-outgrown-its-reporting-setup"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/sv-se/insight-items/part-2-five-signs-your-group-has-outgrown-its-reporting-setup"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/insight-items/part-2-five-signs-your-group-has-outgrown-its-reporting-setup"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/no-no/insight-items/part-2-why-bolt-on-ai-doesnt-fix-the-financial-consolidation-problem"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/insight-items/part-2-why-bolt-on-ai-doesnt-fix-the-financial-consolidation-problem"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/sv-se/insight-items/part-2-why-bolt-on-ai-doesnt-fix-the-financial-consolidation-problem"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/no-no/insight-items/part-3-account-mapping-across-multiple-erps-is-a-classification-problem-ai-solves-it"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/sv-se/insight-items/part-3-account-mapping-across-multiple-erps-is-a-classification-problem-ai-solves-it"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/insight-items/part-3-account-mapping-across-multiple-erps-is-a-classification-problem-ai-solves-it"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/sv-se/insight-items/part-3-what-the-reporting-gap-actually-costs-beyond-the-visible-hours"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/insight-items/part-3-what-the-reporting-gap-actually-costs-beyond-the-visible-hours"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/no-no/insight-items/part-3-what-the-reporting-gap-actually-costs-beyond-the-visible-hours"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/insight-items/part-4-intercompany-elimination-is-a-pattern-recognition-problem-heres-how-ai-handles-it"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/sv-se/insight-items/part-4-intercompany-elimination-is-a-pattern-recognition-problem-heres-how-ai-handles-it"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/no-no/insight-items/part-4-intercompany-elimination-is-a-pattern-recognition-problem-heres-how-ai-handles-it"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/sv-se/insight-items/part-5-the-multi-erp-problem-why-most-consolidation-tools-break-down-in-real-world-group-structures"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/no-no/insight-items/part-5-the-multi-erp-problem-why-most-consolidation-tools-break-down-in-real-world-group-structures"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/insight-items/part-5-the-multi-erp-problem-why-most-consolidation-tools-break-down-in-real-world-group-structures"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/no-no/insight-items/part-6-what-actually-changes-when-financial-consolidation-becomes-continuous"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/sv-se/insight-items/part-6-what-actually-changes-when-financial-consolidation-becomes-continuous"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/insight-items/part-6-what-actually-changes-when-financial-consolidation-becomes-continuous"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/insight-items/part4-why-existing-tools-dont-fix-the-reporting-gap----and-what-actually-does"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/sv-se/insight-items/part4-why-existing-tools-dont-fix-the-reporting-gap----and-what-actually-does"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/no-no/insight-items/part4-why-existing-tools-dont-fix-the-reporting-gap----and-what-actually-does"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/no-no/insight-items/why-manual-consolidation-persists----even-when-everyone-knows-its-broken"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/sv-se/insight-items/why-manual-consolidation-persists----even-when-everyone-knows-its-broken"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/insight-items/why-manual-consolidation-persists----even-when-everyone-knows-its-broken"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/press-articles/corvenia-far-order-fran-nordisk-industrikoncern-med-fokus-pa-forsvar"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/press-articles/corvenia-och-beyond-frames-entertainment-ingar-avsiktsforklaring-om-notering-via-omvant-forvarv"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/press-articles/corvenia-rekryterar-mans-larsson-fran-visma-som-ny-vd"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/press-articles/corvenia-tecknar-avtal-om-omvant-forvarv"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/press-articles/kallelse-till-extra-bolagsstamma-i-corvenia-ab"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/press-articles/kommunike-fran-extra-bolagsstamma-29-oktober-2026"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/press-articles/microsoftprofilen-anders-fuchs-till-corvenias-styrelse-ser-internationell-potential-i-ai-plattformen"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/press-articles/seagarden-valjer-corvenia-for-samlad-koncernoversikt"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/no-no/videoer/selskapspresentasjon-oivind-horpestad"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/videoer/selskapspresentasjon-oivind-horpestad"
+    },
+    {
+      "bing": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "detail": null,
+        "http_status": null,
+        "last_crawled": null,
+        "status": "unknown",
+        "submitted_at": null
+      },
+      "first_seen": "2026-11-19T16:57:44+00:00",
+      "google": {
+        "checked_at": "2026-11-19T16:57:44+00:00",
+        "coverage": null,
+        "detail": null,
+        "google_canonical": null,
+        "indexing_state": null,
+        "last_crawl": null,
+        "robots": null,
+        "status": "unknown",
+        "verdict": null
+      },
+      "last_change": "2026-11-19T16:57:44+00:00",
+      "next_check": "2026-11-20T16:57:44+00:00",
+      "precheck": {
+        "ok": true,
+        "problem": null
+      },
+      "url": "https://www.corvenia.com/sv-se/videoer/selskapspresentasjon-oivind-horpestad"
+    }
+  ]
+}
