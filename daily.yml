@@ -1,0 +1,53 @@
+name: Daily index check
+
+on:
+  schedule:
+    - cron: "17 7 * * *"   # 07:17 UTC = 08:17 Oslo (winter) / 09:17 (summer)
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: index-monitor
+  cancel-in-progress: false
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - run: pip install -r requirements.txt
+
+      - name: Run monitor
+        env:
+          SITE_URL: https://www.corvenia.com
+          GSC_PROPERTY: ${{ vars.GSC_PROPERTY || 'sc-domain:corvenia.com' }}
+          GSC_SERVICE_ACCOUNT_JSON: ${{ secrets.GSC_SERVICE_ACCOUNT_JSON }}
+          BING_API_KEY: ${{ secrets.BING_API_KEY }}
+          BING_SITE_URL: ${{ vars.BING_SITE_URL || 'https://www.corvenia.com' }}
+        run: python monitor.py
+
+      - name: Commit results
+        run: |
+          git config user.name "index-monitor[bot]"
+          git config user.email "index-monitor@users.noreply.github.com"
+          git add data/ docs/index.html
+          git diff --cached --quiet && echo "no changes" || git commit -m "Index status $(date -u +%F)"
+          git push
+
+      - name: Fail the job if the run reported errors
+        run: |
+          python - <<'EOF'
+          import json,sys
+          s=json.load(open("data/status.json"))
+          errs=s["last_run"]["errors"]
+          if errs:
+              print("Run errors:", errs); sys.exit(1)
+          EOF
