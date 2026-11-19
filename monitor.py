@@ -52,7 +52,8 @@ WEEKLY_DAYS = 7
 INDEXED_RECHECK_DAYS = 30
 ESCALATE_AFTER_DAYS = 14
 MAX_GOOGLE_INSPECTIONS_PER_RUN = int(os.environ.get("MAX_GOOGLE_INSPECTIONS_PER_RUN", "150"))
-MAX_BING_CHECKS_PER_RUN = int(os.environ.get("MAX_BING_CHECKS_PER_RUN", "150"))
+MAX_BING_CHECKS_PER_RUN = int(os.environ.get("MAX_BING_CHECKS_PER_RUN", "80"))
+BING_PAUSE_SECONDS = float(os.environ.get("BING_PAUSE_SECONDS", "1.5"))  # Bing throttles bursts
 UA = "CorveniaSearchMonitor/1.0 (+https://www.corvenia.com)"
 
 NOW = datetime.now(timezone.utc)
@@ -268,34 +269,43 @@ class Bing:
             return out
         self.calls += 1
         q = urllib.parse.urlencode({"siteUrl": BING_SITE_URL, "url": url, "apikey": BING_API_KEY})
-        try:
-            code, body, _ = http_get(f"{self.BASE}/GetUrlInfo?{q}")
-            data = json.loads(body) if body else {}
-        except Exception as e:
-            out["status"] = "check_failed"
-            out["detail"] = str(e)[:300]
-            return out
-        if code != 200:
+        data: dict = {}
+        for attempt in range(4):
+            time.sleep(BING_PAUSE_SECONDS)
+            try:
+                code, body, _ = http_get(f"{self.BASE}/GetUrlInfo?{q}")
+                data = json.loads(body) if body else {}
+            except Exception as e:
+                out["status"] = "check_failed"
+                out["detail"] = str(e)[:300]
+                return out
+            throttled = "Throttle" in json.dumps(data) or code == 429
+            if code == 200 and not throttled and "ErrorCode" not in json.dumps(data):
+                break
+            if throttled and attempt < 3:
+                time.sleep(10 * (attempt + 1))  # back off 10s, 20s, 30s
+                continue
             out["status"] = "check_failed"
             out["detail"] = str(data)[:300]
             return out
         d = data.get("d") or {}
-        out["http_status"] = d.get("HttpStatus")
+        http_status = d.get("HttpStatus") or 0  # Bing often reports 0 = not reported
+        out["http_status"] = http_status or None
         raw_date = d.get("LastCrawledDate") or ""
         m = re.search(r"/Date\((\d+)", raw_date)
         if m:
             out["last_crawled"] = iso(datetime.fromtimestamp(int(m.group(1)) / 1000, tz=timezone.utc))
         # Bing exposes crawl facts, not an explicit "indexed" flag.
-        # We call it "indexed" only when Bing has crawled it and got HTTP 200.
-        if out["last_crawled"] and out["http_status"] == 200:
+        # A crawl date without an error status is the strongest positive signal available.
+        if out["last_crawled"] and http_status < 400:
             out["status"] = "indexed"
-            out["detail"] = "crawled with HTTP 200 (Bing does not expose an explicit index flag)"
+            out["detail"] = f"crawled by Bing {out['last_crawled'][:10]} (no explicit index flag in Bing API)"
         elif out["last_crawled"]:
             out["status"] = "not_indexed"
-            out["detail"] = f"crawled, HTTP {out['http_status']}"
+            out["detail"] = f"Bing crawl got HTTP {http_status}"
         else:
             out["status"] = "pending"
-            out["detail"] = "not crawled yet"
+            out["detail"] = "not crawled by Bing yet"
         return out
 
 
