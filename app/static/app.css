@@ -87,6 +87,18 @@ svg.trend .grid { stroke: var(--line); }
 svg.trend .axis { font: 10px var(--sans); fill: var(--muted); }
 svg.trend .marker { stroke: var(--flame); stroke-width: 1; stroke-dasharray: 3 3; }
 
+.tiles.compact { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); }
+.tiles.compact .tile { min-height: 0; }
+.tiles.compact .value { font-size: 28px; }
+.controls { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin: 0 0 10px; }
+.controls input[type=search], .controls select { font: inherit; font-size: 13px; padding: 6px 8px; border: 1px solid var(--line); border-radius: 6px; background: var(--card); }
+.controls input[type=search] { flex: 0 1 280px; }
+.controls .check { font-size: 13px; display: flex; align-items: center; gap: 4px; }
+th[data-sort] { cursor: pointer; user-select: none; }
+th.asc::after { content: " ▲"; font-size: 9px; }
+th.desc::after { content: " ▼"; font-size: 9px; }
+td .reason { font-size: 12px; margin-top: 3px; }
+tr[hidden] { display: none; }
 .logfix { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
 .logfix input, .logfix select { font: inherit; font-size: 13px; padding: 6px 8px; border: 1px solid var(--line); border-radius: 6px; background: var(--card); }
 .logfix input[name=url] { flex: 1 1 260px; }

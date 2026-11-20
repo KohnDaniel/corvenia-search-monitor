@@ -147,19 +147,21 @@ def scorecard(store: Store, days: int = 28) -> dict:
 
 # ------------------------------------------------------------------ index coverage
 
+STATUSES = ("indexed", "pending", "not_indexed", "blocked", "check_failed", "unknown")
+
+
 def coverage(store: Store) -> dict:
+    """Every active sitemap URL (the register), status counts per engine, and open actions."""
     now = datetime.now(timezone.utc)
     inv = active_inventory(store)
-    gaps = []
+    pages = []
     for e in inv:
         g, b = e.get("google") or {}, e.get("bing") or {}
-        if g.get("status") == "indexed" and b.get("status") == "indexed":
-            continue
         sub = b.get("submitted_at") or b.get("first_submitted_at")
-        first = e.get("first_seen")
-        ref = sub or first
-        gaps.append({
-            "url": e["url"], "path": e.get("path") or e["url"], "language": e.get("language"),
+        ref = sub or e.get("first_seen")
+        pages.append({
+            "url": e["url"], "path": e.get("path") or e["url"], "language": e.get("language") or "en",
+            "first_seen": e.get("first_seen"), "next_check": e.get("next_check"),
             "google": g.get("status", "unknown"), "google_reason": g.get("detail") or g.get("coverage"),
             "google_last_crawl": g.get("last_crawl"),
             "bing": b.get("status", "unknown"), "bing_reason": b.get("detail"),
@@ -167,12 +169,16 @@ def coverage(store: Store) -> dict:
             "submitted_at": sub,
             "days_since_submit": (now - datetime.fromisoformat(ref.replace("Z", "+00:00"))).days if ref else None,
             "precheck_problem": (e.get("precheck") or {}).get("problem"),
+            "gap": not (g.get("status") == "indexed" and b.get("status") == "indexed"),
         })
-    gaps.sort(key=lambda x: (x["google"] == "indexed", -(x["days_since_submit"] or 0)))
-    counts = indexed_now(store)
+    pages.sort(key=lambda x: x["path"])
+    counts = {eng: {s: sum(p[eng] == s for p in pages) for s in STATUSES} for eng in ("google", "bing")}
     actions = [a for a in store.query("actions") if a.get("status") in ("open", "in_progress")]
-    return {"total": counts["total"], "google": counts["google"], "bing": counts["bing"],
-            "gaps": gaps, "open_actions": actions}
+    runs = [r for r in store.query("collector_runs", [("collector", "==", "indexing")]) if r.get("started")]
+    last = max(runs, key=lambda r: r["started"]) if runs else {}
+    return {"total": len(pages), "counts": counts, "pages": pages,
+            "gaps": [p for p in pages if p["gap"]], "open_actions": actions,
+            "new_last_run": (last.get("counts") or {}).get("new", 0), "last_run": last.get("started")}
 
 
 # ------------------------------------------------------------------ search performance

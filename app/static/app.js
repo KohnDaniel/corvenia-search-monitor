@@ -24,6 +24,41 @@ document.querySelectorAll("button.resubmit").forEach((btn) => {
   });
 });
 
+// All-pages register: filter by URL text, Google/Bing status, language, gaps; click headers to sort.
+const reg = document.getElementById("register");
+if (reg) {
+  const rows = Array.from(reg.tBodies[0].rows);
+  const $ = (id) => document.getElementById(id);
+  const apply = () => {
+    const q = $("f-q").value.trim().toLowerCase();
+    const g = $("f-g").value, b = $("f-b").value, l = $("f-l").value, gap = $("f-gap").checked;
+    let n = 0;
+    rows.forEach((r) => {
+      const d = r.dataset;
+      const show = (!q || d.path.includes(q)) && (!g || d.g === g) && (!b || d.b === b) &&
+                   (!l || d.l === l) && (!gap || d.gap === "1");
+      r.hidden = !show;
+      if (show) n++;
+    });
+    $("f-count").textContent = `${n} of ${rows.length}`;
+  };
+  ["f-q", "f-g", "f-b", "f-l", "f-gap"].forEach((id) => $(id).addEventListener("input", apply));
+  let sortKey = null, asc = true;
+  reg.querySelectorAll("th[data-sort]").forEach((th) => {
+    th.addEventListener("click", () => {
+      const k = th.dataset.sort;
+      asc = sortKey === k ? !asc : true;
+      sortKey = k;
+      const val = (r) => k === "days" ? Number(r.dataset.days) : k === "google" ? r.dataset.g : k === "bing" ? r.dataset.b : r.dataset[k] || "";
+      rows.sort((a, c) => (val(a) > val(c) ? 1 : val(a) < val(c) ? -1 : 0) * (asc ? 1 : -1));
+      rows.forEach((r) => reg.tBodies[0].appendChild(r));
+      reg.querySelectorAll("th").forEach((h) => h.classList.remove("asc", "desc"));
+      th.classList.add(asc ? "asc" : "desc");
+    });
+  });
+  apply();
+}
+
 const form = document.getElementById("logfix");
 if (form) {
   form.addEventListener("submit", async (ev) => {
