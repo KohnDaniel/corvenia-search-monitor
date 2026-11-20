@@ -98,8 +98,10 @@ def collect(store: Store) -> dict:
 
     pages_docs, inv_updates = {}, {}
     for locale_id in list(locales) or [None]:
+        # The API rejects localeId for the primary locale ("must be a secondary locale"): omit it there.
+        query_locale = None if (locales.get(locale_id or "") or {}).get("primary") else locale_id
         try:
-            pages = wf.paged(f"/sites/{wf.site}/pages", "pages", localeId=locale_id)
+            pages = wf.paged(f"/sites/{wf.site}/pages", "pages", localeId=query_locale)
         except Exception as e:
             run.error(f"pages {locale_id}: {e}")
             continue
