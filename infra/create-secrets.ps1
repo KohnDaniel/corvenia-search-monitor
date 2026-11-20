@@ -1,7 +1,9 @@
 # Prompts for each app secret (input hidden) and stores it in Secret Manager.
 # Press Enter on an empty prompt to skip a secret. Re-running adds a new version.
 #   powershell -ExecutionPolicy Bypass -File infra\create-secrets.ps1
-$ErrorActionPreference = "Stop"
+# "Continue", not "Stop": Windows PowerShell 5.1 turns any stderr from a native command (gcloud's
+# NOT_FOUND for a secret that does not exist yet) into a terminating error. Exit codes are checked instead.
+$ErrorActionPreference = "Continue"
 $gcloud = Join-Path $env:LOCALAPPDATA "Google\Cloud SDK\google-cloud-sdk\bin\gcloud.cmd"
 if (-not (Test-Path $gcloud)) { $gcloud = "gcloud" }
 $project = "corvenia-search-monitor"
@@ -24,13 +26,18 @@ foreach ($name in $secrets.Keys) {
     $tmp = New-TemporaryFile
     try {
         [IO.File]::WriteAllText($tmp.FullName, $plain.Trim())
-        & $gcloud secrets describe $name --project $project *> $null
+        & $gcloud secrets describe $name --project $project 2>$null | Out-Null
         if ($LASTEXITCODE -eq 0) {
-            & $gcloud secrets versions add $name --project $project --data-file $tmp.FullName *> $null
-            Write-Host "  new version added" -ForegroundColor Green
+            $out = & $gcloud secrets versions add $name --project $project --data-file $tmp.FullName 2>&1
+            $what = "new version added"
         } else {
-            & $gcloud secrets create $name --project $project --replication-policy automatic --data-file $tmp.FullName *> $null
-            Write-Host "  created" -ForegroundColor Green
+            $out = & $gcloud secrets create $name --project $project --replication-policy automatic --data-file $tmp.FullName 2>&1
+            $what = "created"
+        }
+        if ($LASTEXITCODE -eq 0) {
+            Write-Host "  $what" -ForegroundColor Green
+        } else {
+            Write-Host "  FAILED: $($out | Out-String)" -ForegroundColor Red
         }
     } finally {
         Remove-Item $tmp.FullName -Force
