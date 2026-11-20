@@ -78,6 +78,17 @@ class BingClient:
         log(f"Bing: submitted {len(urls[:500])} URLs -> {'ok' if ok else detail}")
         return {"ok": ok, "detail": detail, "count": len(urls[:500])}
 
+    def daily_quota(self, fallback: int = 100) -> int:
+        """Remaining URL submissions today (GetUrlSubmissionQuota). Falls back to a conservative cap."""
+        if not self.enabled:
+            return 0
+        code, data = self._get("GetUrlSubmissionQuota")
+        try:
+            return int((data.get("d") or {}).get("DailyQuota"))
+        except (TypeError, ValueError, AttributeError):
+            log(f"Bing: quota unavailable (HTTP {code}); using {fallback}")
+            return fallback
+
     def url_info(self, url: str, cap: int = config.MAX_BING_CHECKS_PER_RUN) -> dict:
         out = {"checked_at": iso(now_utc()), "status": "unknown", "http_status": None,
                "last_crawled": None, "detail": None}

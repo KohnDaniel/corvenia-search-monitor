@@ -45,18 +45,19 @@ def evaluate_index_rules(inventory: list[dict], now: datetime | None = None) -> 
         if one_engine_only and now - submitted >= timedelta(days=ENGINE_MISMATCH_DAYS):
             missing = "Bing" if g == "indexed" else "Google"
             out.append({"rule": "engine_mismatch", "url": url, "detail": f"not indexed in {missing}",
-                        "suggested_fix": "Resubmit to Bing; check canonical and robots" if missing == "Bing"
+                        "suggested_fix": "Resubmitted to Bing automatically every 7 days; check canonical and robots" if missing == "Bing"
                         else "Inspect URL in Search Console; add internal links; check canonical"})
         published = _dt(e.get("first_published")) or first
         if g != "indexed" and now - published >= timedelta(hours=SLOW_PUBLISH_HOURS) and now - published < timedelta(days=NOT_INDEXED_DAYS):
             out.append({"rule": "slow_publish", "url": url, "detail": f"Google: {g}",
-                        "suggested_fix": "Inspect URL, add internal links, resubmit"})
+                        "suggested_fix": "Inspect URL in Search Console, add internal links"})
         if now - first >= timedelta(days=NOT_INDEXED_DAYS):
             for eng, s in (("google", g), ("bing", b)):
                 if s in ("pending", "not_indexed"):
                     out.append({"rule": f"{eng}_not_indexed", "url": url,
                                 "detail": (e.get(eng) or {}).get("detail"),
-                                "suggested_fix": "Resubmit to Bing" if eng == "bing" else "Check coverage reason in URL Inspection"})
+                                "suggested_fix": "Being resubmitted to Bing automatically; if it persists, check content quality and internal links"
+                                if eng == "bing" else "Check coverage reason in URL Inspection"})
     return out
 
 
@@ -71,7 +72,7 @@ def sync_actions(store: Store, alerts: list[dict], now: datetime | None = None) 
         live.add(aid)
         cur = existing.get(aid)
         if cur and cur.get("status") in ("open", "in_progress"):
-            store.put("actions", aid, {"detail": a.get("detail"), "last_seen": stamp})
+            store.put("actions", aid, {"detail": a.get("detail"), "suggested_fix": a.get("suggested_fix"), "last_seen": stamp})
         elif not cur or cur.get("status") == "closed" and cur.get("closed_by") == "rules":
             store.put("actions", aid, {**a, "status": "open", "owner": (cur or {}).get("owner"),
                                        "opened": stamp, "closed": None, "last_seen": stamp}, merge=False)

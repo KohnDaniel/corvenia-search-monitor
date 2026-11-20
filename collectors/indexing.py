@@ -114,6 +114,26 @@ def _hist(e: dict, now, event: str) -> None:
     e["history"] = (e.get("history", []) + [{"at": iso(now), "event": event}])[-40:]
 
 
+RESUBMIT_AFTER_DAYS = 7
+
+
+def due_for_resubmit(register: dict, now, exclude: set[str] = frozenset()) -> list[str]:
+    """Active, pre-check-passing pages not crawled by Bing, last submitted RESUBMIT_AFTER_DAYS+ ago.
+    Oldest submission first, so a quota cap delays the most recent ones."""
+    cutoff = now - timedelta(days=RESUBMIT_AFTER_DAYS)
+    out = []
+    for k, e in register.items():
+        if k in exclude or e.get("removed_from_sitemap") or not (e.get("precheck") or {}).get("ok"):
+            continue
+        b = e.get("bing") or {}
+        if b.get("status") in ("indexed", "blocked"):
+            continue
+        last = parse_iso(b.get("submitted_at")) or parse_iso(e.get("first_seen"))
+        if last and last <= cutoff:
+            out.append((last, k))
+    return [k for _, k in sorted(out)]
+
+
 def record_submit(store: Store, url: str, now, actor: str, note: str) -> None:
     store.put("changes", doc_id("submit", url, iso(now)), {
         "date": iso(now), "day": now.astimezone(OSLO).date().isoformat(), "url": normalize(url),
@@ -169,17 +189,33 @@ def collect(store: Store) -> dict:
             submit.append(key)
         else:
             _hist(e, now, f"precheck: {e['precheck']['problem']}")
-    if submit:
-        res = bing.submit([register[k]["loc"] for k in submit])
+    # Automatic resubmit: pages Bing still has not crawled RESUBMIT_AFTER_DAYS after their last
+    # submission go back in the batch, so each page is resubmitted at most once per that interval.
+    resubmit = due_for_resubmit(register, now, exclude=set(submit)) if bing.enabled else []
+    if bing.enabled and (submit or resubmit):
+        room = min(500, bing.daily_quota()) - len(submit)
+        if len(resubmit) > max(room, 0):
+            run.note(f"Bing quota: resubmitting {max(room, 0)} of {len(resubmit)} due; the rest go tomorrow")
+            resubmit = resubmit[:max(room, 0)]
+    batch = submit + resubmit
+    if batch and bing.enabled:
+        res = bing.submit([register[k]["loc"] for k in batch])
         if res["ok"]:
             run.count("bing_submitted", len(submit))
-            for k in submit:
+            run.count("bing_resubmitted", len(resubmit))
+            for k in batch:
                 b = register[k]["bing"]
                 b["submitted_at"] = iso(now)
                 b["first_submitted_at"] = b.get("first_submitted_at") or iso(now)
-                _hist(register[k], now, "submitted to Bing")
-                record_submit(store, k, now, "collector:indexing", "new or changed in sitemap")
-        elif bing.enabled:
+                b["submit_count"] = (b.get("submit_count") or 0) + 1
+                if k in resubmit:
+                    _hist(register[k], now, f"auto-resubmitted to Bing (not crawled {RESUBMIT_AFTER_DAYS}+ days after last submit)")
+                    record_submit(store, k, now, "collector:indexing",
+                                  f"Automatic resubmit: not crawled by Bing {RESUBMIT_AFTER_DAYS}+ days after last submit")
+                else:
+                    _hist(register[k], now, "submitted to Bing")
+                    record_submit(store, k, now, "collector:indexing", "new or changed in sitemap")
+        else:
             run.error(f"Bing submit failed: {res['detail']}")
 
     due = [e for e in register.values()

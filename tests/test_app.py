@@ -66,23 +66,14 @@ def test_pages_render(client):
     for path in ("/", "/?days=7", "/coverage", "/performance?days=90", "/opportunities", "/opportunities?days=90", "/changes"):
         r = c.get(path)
         assert r.status_code == 200, path
-    assert "Resubmit to Bing" in c.get("/coverage").text
+    assert "Resubmit to Bing" not in c.get("/coverage").text  # submission is automatic; no manual button
+    assert c.post("/api/resubmit", json={"url": "https://www.corvenia.com/"}).status_code in (404, 405)
 
 
-def test_resubmit_writes_change(client, monkeypatch):
+def test_log_change_records_iap_user(client):
     c, s = client
-
-    class FakeBing:
-        enabled = True
-
-        def submit(self, urls):
-            return {"ok": True, "detail": None, "count": len(urls)}
-
-    monkeypatch.setattr(main, "BingClient", FakeBing)
-    url = "https://www.corvenia.com/no-no/konsolidering"
-    r = c.post("/api/resubmit", json={"url": url}, headers={"X-Goog-Authenticated-User-Email": "accounts.google.com:a@b.c"})
-    assert r.status_code == 200 and r.json()["ok"]
+    r = c.post("/api/changes", json={"url": "https://www.corvenia.com/", "type": "fix", "note": "Fixed title"},
+               headers={"X-Goog-Authenticated-User-Email": "accounts.google.com:a@b.c"})
+    assert r.status_code == 200
     rows = s.query("changes")
-    assert len(rows) == 1 and rows[0]["type"] == "submit" and rows[0]["actor"] == "a@b.c" and rows[0]["url"] == url
-    assert s.get("url_inventory", url)["bing"]["submitted_at"]
-    assert c.post("/api/resubmit", json={"url": "https://www.corvenia.com/nope"}).status_code == 404
+    assert len(rows) == 1 and rows[0]["actor"] == "a@b.c" and rows[0]["type"] == "fix"

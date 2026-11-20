@@ -1,4 +1,4 @@
-// Resubmit-to-Bing buttons and the change-log form. Both call the JSON API and report inline.
+// Register filters/sorting and the change-log form (posts to the JSON API and reports inline).
 async function postJSON(path, body) {
   const r = await fetch(path, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) });
   let data = {};
@@ -6,23 +6,6 @@ async function postJSON(path, body) {
   if (!r.ok) throw new Error(data.detail || `HTTP ${r.status}`);
   return data;
 }
-
-document.querySelectorAll("button.resubmit").forEach((btn) => {
-  btn.addEventListener("click", async () => {
-    btn.disabled = true;
-    btn.textContent = "Submitting…";
-    try {
-      await postJSON("/api/resubmit", { url: btn.dataset.url });
-      btn.textContent = "Submitted ✓";
-      btn.classList.add("done");
-    } catch (e) {
-      btn.textContent = "Failed";
-      btn.title = e.message;
-      btn.classList.add("err");
-      btn.disabled = false;
-    }
-  });
-});
 
 // All-pages register: filter by URL text, Google/Bing status, language, gaps; click headers to sort.
 const reg = document.getElementById("register");

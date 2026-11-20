@@ -28,7 +28,7 @@ tests/       pytest, JSON store, no network
 | Secrets | Secret Manager, project `corvenia-search-monitor` |
 | Runtime identity | `index-monitor@corvenia-search-monitor.iam.gserviceaccount.com` |
 
-App v1 modules: 1 Scorecard (`/`), 2 Index coverage with *Resubmit to Bing* (`/coverage`),
+App v1 modules: 1 Scorecard (`/`), 2 Index coverage (`/coverage`), 4 Opportunities (`/opportunities`),
 3 Search performance (`/performance`), 8 Change log with *Log change* (`/changes`).
 Period switcher 7 / 28 / 90 days vs. the previous period.
 
@@ -36,7 +36,7 @@ Period switcher 7 / 28 / 90 days vs. the previous period.
 
 | Secret | Value | Used by |
 |---|---|---|
-| `BING_API_KEY` | Bing Webmaster Tools → Settings → API access | indexing, bing, app (resubmit) |
+| `BING_API_KEY` | Bing Webmaster Tools → Settings → API access | indexing, bing |
 | `GSC_SERVICE_ACCOUNT_JSON` | JSON key of `index-monitor@…` (optional on Cloud Run: without it the runtime service account is used directly) | indexing, gsc |
 | `CLARITY_API_TOKEN` | Clarity → Settings → Data Export → generate token | clarity |
 | `WEBFLOW_API_TOKEN` | Webflow site token with `sites:read pages:read cms:read forms:read` (add `pages:write sites:write` for metadata editing later) | webflow |
@@ -54,7 +54,7 @@ A collector whose secret is missing logs `skipped` and the others run; it does n
 | Collector | Writes | Notes |
 |---|---|---|
 | `webflow` | `webflow_pages`, `changes` (publish), enriches `url_inventory` | site + CMS publish dates |
-| `indexing` | `url_inventory`, `index_status` (URL × engine × day), `changes` (submit) | Inspection: 60 s timeout, 1 retry, cap 80/run. Bing: ≥1.5 s pacing, 10/20/30 s back-off |
+| `indexing` | `url_inventory`, `index_status` (URL × engine × day), `changes` (submit) | Submits new/changed pages to Bing; **automatically resubmits pages Bing has not crawled 7 days after their last submit** (within the daily quota, oldest first; no manual button). Inspection: 60 s timeout, 1 retry, cap 80/run. Bing: ≥1.5 s pacing, 10/20/30 s back-off |
 | `gsc` | `gsc_page_daily` (day × page), `gsc_daily` (day × page × query × country × device) | first run backfills 16 months; then from last day − 3 (GSC lags ~2 days); Pacific-time dates as given |
 | `bing` | `bing_daily` (kind = site / query / page) | Bing's own date buckets |
 | `clarity` | `clarity_daily`, `clarity_raw` | 2 of the 10 allowed requests/day; last 24 h; **must run daily** |

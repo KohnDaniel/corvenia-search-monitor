@@ -14,13 +14,12 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 from fastapi import FastAPI, HTTPException, Request
-from fastapi.responses import HTMLResponse, JSONResponse
+from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 
 from app import charts, queries
 from collectors.base import OSLO, iso
-from collectors.bing import BingClient
 from core.store import get_store
 from core.urls import doc_id, normalize
 
@@ -106,29 +105,8 @@ def _log_change(store, url: str, kind: str, note: str, actor: str, **extra) -> d
     return row
 
 
-@app.post("/api/resubmit")
-async def resubmit(request: Request):
-    body = await request.json()
-    url = normalize(body.get("url", ""))
-    store = get_store()
-    entry = store.get("url_inventory", url)
-    if not entry:
-        raise HTTPException(404, "URL is not in the sitemap inventory")
-    bing = BingClient()
-    if not bing.enabled:
-        raise HTTPException(503, "BING_API_KEY is not available to the app")
-    res = bing.submit([entry.get("loc") or url])
-    actor = user_of(request)
-    if not res["ok"]:
-        _log_change(store, url, "submit", f"Resubmit to Bing FAILED: {res['detail']}", actor, engine="bing", ok=False)
-        return JSONResponse({"ok": False, "detail": res["detail"]}, status_code=502)
-    now = iso(datetime.now(timezone.utc))
-    b = {**(entry.get("bing") or {}), "submitted_at": now}
-    b["first_submitted_at"] = b.get("first_submitted_at") or now
-    hist = (entry.get("history") or []) + [{"at": now, "event": f"resubmitted to Bing by {actor}"}]
-    store.put("url_inventory", url, {"bing": b, "history": hist[-40:], "next_check": now})
-    row = _log_change(store, url, "submit", "Resubmitted to Bing from the app", actor, engine="bing", ok=True)
-    return {"ok": True, "change": row}
+# Bing submission is fully automatic (collectors/indexing.py): new/changed pages on discovery, and pages
+# not crawled 7 days after their last submit are resubmitted. There is deliberately no manual button.
 
 
 @app.post("/api/changes")

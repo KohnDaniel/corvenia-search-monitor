@@ -66,6 +66,55 @@ def test_indexing_keeps_known_status_when_engine_disabled(tmp_path, monkeypatch)
     assert e["google"]["status"] == "indexed" and e["bing"]["status"] == "indexed"
 
 
+def test_auto_resubmit_after_7_days(tmp_path, monkeypatch):
+    from collectors import indexing
+
+    s = JsonStore(tmp_path)
+    now = datetime.now(timezone.utc)
+    ok_pc = {"ok": True, "checked_at": now.isoformat()}
+    later = (now + timedelta(days=30)).isoformat()  # not due for a status check in this run
+
+    def page(path, bing, submitted_days_ago):
+        u = f"https://www.corvenia.com/{path}"
+        sub = (now - timedelta(days=submitted_days_ago)).isoformat()
+        s.put("url_inventory", u, {**indexing.new_entry(u, None, now), "first_seen": sub, "precheck": ok_pc,
+                                   "google": {"status": "indexed"}, "next_check": later,
+                                   "bing": {"status": bing, "submitted_at": sub, "first_submitted_at": sub}})
+        return u
+
+    stale = page("stale", "pending", 8)          # not crawled, last submit 8 days ago -> resubmit
+    fresh = page("fresh", "pending", 3)          # submitted 3 days ago -> wait
+    done = page("done", "indexed", 20)           # crawled -> never resubmit
+    monkeypatch.setattr(indexing, "fetch_sitemap_urls", lambda url: {stale: None, fresh: None, done: None})
+
+    sent = []
+
+    class FakeBing:
+        enabled, calls = True, 0
+
+        def daily_quota(self):
+            return 100
+
+        def submit(self, urls):
+            sent.extend(urls)
+            return {"ok": True, "detail": None, "count": len(urls)}
+
+    class NoGoogle:
+        enabled, inspections = False, 0
+
+    monkeypatch.setattr(indexing, "BingClient", FakeBing)
+    monkeypatch.setattr(indexing, "GscClient", NoGoogle)
+    res = indexing.collect(s)
+    assert sent == [stale]
+    assert res["counts"]["bing_resubmitted"] == 1
+    assert s.get("url_inventory", stale)["bing"]["submitted_at"] > (now - timedelta(minutes=1)).isoformat()
+    rows = s.query("changes")
+    assert len(rows) == 1 and rows[0]["actor"] == "collector:indexing" and "Automatic resubmit" in rows[0]["note"]
+    sent.clear()
+    indexing.collect(s)
+    assert sent == []  # resubmitted at most once per 7 days
+
+
 def test_rules_open_and_close(tmp_path):
     s = JsonStore(tmp_path)
     old = (datetime.now(timezone.utc) - timedelta(days=20)).isoformat()
