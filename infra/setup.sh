@@ -26,7 +26,8 @@ run() { [[ $step == all || $step == "$1" ]]; }
 if run apis; then
   gcloud services enable run.googleapis.com artifactregistry.googleapis.com cloudbuild.googleapis.com \
     firestore.googleapis.com secretmanager.googleapis.com cloudscheduler.googleapis.com iap.googleapis.com \
-    searchconsole.googleapis.com iamcredentials.googleapis.com sts.googleapis.com --project "$PROJECT"
+    searchconsole.googleapis.com iamcredentials.googleapis.com sts.googleapis.com \
+    cloudresourcemanager.googleapis.com --project "$PROJECT"
 fi
 
 if run firestore; then
@@ -53,12 +54,7 @@ if run iam; then
 fi
 
 if run build; then
-  gcloud builds submit --project "$PROJECT" --region "$REGION" --config /dev/stdin . <<EOF
-steps:
-- name: gcr.io/cloud-builders/docker
-  args: [build, -f, infra/Dockerfile, -t, ${IMAGE}:latest, .]
-images: [${IMAGE}:latest]
-EOF
+  gcloud builds submit --project "$PROJECT" --region "$REGION" --config infra/cloudbuild.yaml .
 fi
 
 if run service; then

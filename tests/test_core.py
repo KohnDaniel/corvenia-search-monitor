@@ -36,6 +36,33 @@ def test_json_store_upsert_and_query(tmp_path):
     assert JsonStore(tmp_path).get("gsc_daily", "b")["clicks"] == 2  # persisted to disk
 
 
+def test_indexing_keeps_known_status_when_engine_disabled(tmp_path, monkeypatch):
+    from collectors import indexing
+
+    s = JsonStore(tmp_path)
+    old = (datetime.now(timezone.utc) - timedelta(days=40)).isoformat()
+    u = "https://www.corvenia.com/a"
+    s.put("url_inventory", u, {**indexing.new_entry(u, None, datetime.now(timezone.utc)), "first_seen": old,
+                               "precheck": {"ok": True, "checked_at": datetime.now(timezone.utc).isoformat()},
+                               "google": {"status": "indexed"}, "bing": {"status": "indexed"}, "next_check": old})
+    monkeypatch.setattr(indexing, "fetch_sitemap_urls", lambda url: {u: None})
+
+    class Off:
+        enabled, inspections, calls = False, 0, 0
+
+        def inspect(self, url):
+            return {"status": "unknown"}
+
+        def url_info(self, url):
+            return {"status": "unknown"}
+
+    monkeypatch.setattr(indexing, "GscClient", Off)
+    monkeypatch.setattr(indexing, "BingClient", Off)
+    indexing.collect(s)
+    e = s.get("url_inventory", u)
+    assert e["google"]["status"] == "indexed" and e["bing"]["status"] == "indexed"
+
+
 def test_rules_open_and_close(tmp_path):
     s = JsonStore(tmp_path)
     old = (datetime.now(timezone.utc) - timedelta(days=20)).isoformat()

@@ -201,11 +201,16 @@ def collect(store: Store) -> dict:
                 prev_g, prev_b = e["google"].get("status"), e["bing"].get("status")
                 g = google.inspect(e["loc"])
                 b = {**e["bing"], **bing.url_info(e["loc"])}
-                # A capped/disabled check must not wipe a known status.
-                not_checked = g["status"] == "unknown" or "per-run cap" in (g.get("detail") or "")
-                if not_checked and prev_g not in (None, "unknown"):
+                capped = any("per-run cap" in (x.get("detail") or "") for x in (g, b))
+
+                # A capped or disabled (no credentials) check must not wipe a known status.
+                def skipped(res: dict) -> bool:
+                    return res["status"] == "unknown" or "per-run cap" in (res.get("detail") or "")
+
+                if skipped(g) and prev_g not in (None, "unknown"):
                     g = e["google"]
-                capped = "per-run cap" in (g.get("detail") or "") or "per-run cap" in (b.get("detail") or "")
+                if skipped(b) and prev_b not in (None, "unknown"):
+                    b = e["bing"]
                 e["google"], e["bing"] = g, b
                 for eng, prev, cur in (("google", prev_g, e["google"]["status"]), ("bing", prev_b, b["status"])):
                     if prev != cur:

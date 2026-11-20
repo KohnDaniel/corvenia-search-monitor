@@ -1,0 +1,6 @@
+# Manual build from a workstation: gcloud builds submit --config infra/cloudbuild.yaml --region europe-north1 .
+# (Pushes to main build in GitHub Actions instead; see .github/workflows/deploy.yml.)
+steps:
+  - name: gcr.io/cloud-builders/docker
+    args: [build, -f, infra/Dockerfile, -t, "europe-north1-docker.pkg.dev/$PROJECT_ID/corvenia/marketing-control:latest", .]
+images: ["europe-north1-docker.pkg.dev/$PROJECT_ID/corvenia/marketing-control:latest"]
