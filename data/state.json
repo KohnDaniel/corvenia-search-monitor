@@ -12,6 +12,19 @@
       "new": 191,
       "removed": 0,
       "started": "2026-11-19T22:11:26+00:00"
+    },
+    {
+      "bing_calls": 0,
+      "bing_submitted": 0,
+      "changed": 0,
+      "checked": 0,
+      "discovered": 191,
+      "errors": [],
+      "finished": "2026-11-20T08:24:40+00:00",
+      "google_calls": 0,
+      "new": 0,
+      "removed": 0,
+      "started": "2026-11-20T08:24:40+00:00"
     }
   ],
   "urls": {
