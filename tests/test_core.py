@@ -34,6 +34,9 @@ def test_json_store_upsert_and_query(tmp_path):
     assert s.get("gsc_daily", "a") == {"_id": "a", "day": "2026-11-01", "clicks": 1, "impressions": 5}
     assert [r["_id"] for r in s.query("gsc_daily", [("day", ">=", "2026-11-02")])] == ["b"]
     assert JsonStore(tmp_path).get("gsc_daily", "b")["clicks"] == 2  # persisted to disk
+    s.put("url_inventory", "https://www.corvenia.com/x", {"url": "https://www.corvenia.com/x"})
+    d = s.get("url_inventory", "https://www.corvenia.com/x")
+    assert d["url"] == "https://www.corvenia.com/x" and "/" not in d["_id"]  # Firestore-safe id
 
 
 def test_indexing_keeps_known_status_when_engine_disabled(tmp_path, monkeypatch):

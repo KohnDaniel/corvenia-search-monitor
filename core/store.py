@@ -19,6 +19,7 @@ Raw daily rows only; 7/28/90-day figures are computed by the app (spec: aggregat
 
 from __future__ import annotations
 
+import hashlib
 import json
 import os
 import threading
@@ -58,6 +59,14 @@ def _match(doc: dict, where: Iterable[Where]) -> bool:
     return True
 
 
+def safe_id(doc_id: str) -> str:
+    """Firestore reads '/' in an id as a path separator. Ids such as URLs are hashed instead;
+    callers keep the readable key in a field (e.g. url). Both backends use this, so behaviour matches."""
+    if "/" in doc_id or doc_id in (".", "..") or len(doc_id.encode()) > 1400:
+        return hashlib.sha1(doc_id.encode("utf-8")).hexdigest()
+    return doc_id
+
+
 class Store:
     def put(self, collection: str, doc_id: str, data: dict, merge: bool = True) -> None: ...
     def put_many(self, collection: str, docs: dict[str, dict]) -> int: ...
@@ -89,6 +98,7 @@ class JsonStore(Store):
         tmp.replace(f)
 
     def put(self, collection: str, doc_id: str, data: dict, merge: bool = True) -> None:
+        doc_id = safe_id(doc_id)
         with self._lock:
             docs = self._load(collection)
             docs[doc_id] = {**docs.get(doc_id, {}), **data} if merge else dict(data)
@@ -99,12 +109,13 @@ class JsonStore(Store):
         with self._lock:
             cur = self._load(collection)
             for k, v in docs.items():
+                k = safe_id(k)
                 cur[k] = {**cur.get(k, {}), **v, "_id": k}
             self._save(collection)
         return len(docs)
 
     def get(self, collection: str, doc_id: str) -> dict | None:
-        d = self._load(collection).get(doc_id)
+        d = self._load(collection).get(safe_id(doc_id))
         return dict(d) if d else None
 
     def query(self, collection, where=(), order_by=None, descending=False, limit=None):
@@ -116,7 +127,7 @@ class JsonStore(Store):
 
     def delete(self, collection: str, doc_id: str) -> None:
         with self._lock:
-            self._load(collection).pop(doc_id, None)
+            self._load(collection).pop(safe_id(doc_id), None)
             self._save(collection)
 
 
@@ -128,11 +139,12 @@ class FirestoreStore(Store):
         self.db = firestore.Client(project=project, database=database)
 
     def put(self, collection, doc_id, data, merge=True):
+        doc_id = safe_id(doc_id)
         self.db.collection(collection).document(doc_id).set({**data, "_id": doc_id}, merge=merge)
 
     def put_many(self, collection, docs):
         n = 0
-        items = list(docs.items())
+        items = [(safe_id(k), v) for k, v in docs.items()]
         for i in range(0, len(items), 400):  # batch limit is 500 writes
             batch = self.db.batch()
             for k, v in items[i:i + 400]:
@@ -142,7 +154,7 @@ class FirestoreStore(Store):
         return n
 
     def get(self, collection, doc_id):
-        snap = self.db.collection(collection).document(doc_id).get()
+        snap = self.db.collection(collection).document(safe_id(doc_id)).get()
         return snap.to_dict() if snap.exists else None
 
     def query(self, collection, where=(), order_by=None, descending=False, limit=None):
@@ -158,7 +170,7 @@ class FirestoreStore(Store):
         return [s.to_dict() for s in q.stream()]
 
     def delete(self, collection, doc_id):
-        self.db.collection(collection).document(doc_id).delete()
+        self.db.collection(collection).document(safe_id(doc_id)).delete()
 
 
 _store: Store | None = None
