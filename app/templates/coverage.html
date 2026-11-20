@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block title %}Index coverage{% endblock %}
+{% block content %}
+<h1>Index coverage</h1>
+<section class="tiles three">
+  <div class="tile"><div class="label">In sitemap</div><div class="value">{{ cov.total | num }}</div></div>
+  <div class="tile"><div class="label">Indexed · Google</div><div class="value">{{ cov.google.indexed | num }}</div><div class="sub">{{ cov.google.rate | pct }}</div></div>
+  <div class="tile"><div class="label">Indexed · Bing</div><div class="value">{{ cov.bing.indexed | num }}</div><div class="sub">{{ cov.bing.rate | pct }} · Bing has no index flag; a crawl without error counts</div></div>
+</section>
+
+<h2>Gaps <span class="muted">({{ cov.gaps | length }} URLs not indexed in both engines)</span></h2>
+<div class="scroll">
+<table class="data">
+  <thead><tr><th>URL</th><th>Google</th><th>Reason (Google)</th><th>Bing</th><th>Reason (Bing)</th><th>Days since submit</th><th>Last crawl G / B</th><th></th></tr></thead>
+  <tbody>
+  {% for g in cov.gaps %}
+    <tr>
+      <td class="url"><a href="{{ g.url }}" target="_blank" rel="noopener">{{ g.path }}</a>{% if g.precheck_problem %}<div class="warn">pre-check: {{ g.precheck_problem }}</div>{% endif %}</td>
+      <td><span class="st {{ g.google }}">{{ g.google }}</span></td>
+      <td class="reason">{{ g.google_reason or "" }}</td>
+      <td><span class="st {{ g.bing }}">{{ g.bing }}</span></td>
+      <td class="reason">{{ g.bing_reason or "" }}</td>
+      <td class="n">{{ g.days_since_submit if g.days_since_submit is not none else "—" }}</td>
+      <td class="nowrap">{{ g.google_last_crawl | day }} / {{ g.bing_last_crawl | day }}</td>
+      <td>{% if g.bing != "indexed" %}<button class="resubmit" data-url="{{ g.url }}">Resubmit to Bing</button>{% endif %}</td>
+    </tr>
+  {% else %}
+    <tr><td colspan="8" class="muted">No gaps: every sitemap URL is indexed in Google and Bing.</td></tr>
+  {% endfor %}
+  </tbody>
+</table>
+</div>
+
+{% if cov.open_actions %}
+<h2>Open actions <span class="muted">({{ cov.open_actions | length }})</span></h2>
+<table class="data">
+  <thead><tr><th>Rule</th><th>URL</th><th>Detail</th><th>Suggested fix</th><th>Opened</th></tr></thead>
+  <tbody>
+  {% for a in cov.open_actions | sort(attribute="opened", reverse=True) %}
+    <tr><td>{{ a.rule }}</td><td class="url">{{ a.url }}</td><td class="reason">{{ a.detail or "" }}</td><td>{{ a.suggested_fix }}</td><td class="nowrap">{{ a.opened | day }}</td></tr>
+  {% endfor %}
+  </tbody>
+</table>
+{% endif %}
+{% endblock %}

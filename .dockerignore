@@ -1,0 +1,10 @@
+.git
+.github
+.localdata
+data/*
+!data/state.json
+docs
+tests
+**/__pycache__
+*.pyc
+.venv

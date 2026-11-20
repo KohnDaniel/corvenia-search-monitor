@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}Marketing Control{% endblock %} · Corvenia</title>
+  <link rel="stylesheet" href="/static/app.css">
+</head>
+<body>
+<header class="top">
+  <a class="brand" href="/">Corvenia <span>Marketing Control</span></a>
+  <nav>
+    {% for href, label in [("/", "Scorecard"), ("/coverage", "Index coverage"), ("/performance", "Search performance"), ("/changes", "Change log")] %}
+      <a href="{{ href }}{% if href in ('/', '/performance') %}?days={{ days }}{% endif %}" class="{{ 'on' if path == href }}">{{ label }}</a>
+    {% endfor %}
+  </nav>
+  <span class="who">{{ user }}</span>
+</header>
+<main>
+  {% block period %}{% endblock %}
+  {% block content %}{% endblock %}
+</main>
+<footer>
+  <span>Collectors:</span>
+  {% for r in runs %}
+    <span class="run {{ r.status }}" title="{{ (r.errors or []) | join(' · ') }}">{{ r.collector }} {{ r.status }} {{ r.started | day }}</span>
+  {% else %}
+    <span class="muted">no runs recorded yet</span>
+  {% endfor %}
+</footer>
+<script src="/static/app.js" defer></script>
+</body>
+</html>

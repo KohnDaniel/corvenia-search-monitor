@@ -1,0 +1,71 @@
+"""App smoke tests against a seeded JSON store (no cloud, no network)."""
+
+from datetime import date, datetime, timedelta, timezone
+
+import pytest
+from fastapi.testclient import TestClient
+
+import core.store as store_mod
+from app import main, queries
+from core.urls import doc_id
+
+
+@pytest.fixture()
+def client(tmp_path, monkeypatch):
+    s = store_mod.JsonStore(tmp_path)
+    monkeypatch.setattr(store_mod, "_store", s)
+    queries.clear_cache()
+    today = date.today()
+    now = datetime.now(timezone.utc).isoformat()
+    urls = ["https://www.corvenia.com/", "https://www.corvenia.com/no-no/konsolidering"]
+    for i, u in enumerate(urls):
+        s.put("url_inventory", u, {
+            "url": u, "loc": u, "path": u[24:] or "/", "first_seen": now, "precheck": {"ok": True},
+            "google": {"status": "indexed"},
+            "bing": {"status": "indexed" if i == 0 else "pending", "detail": "not crawled by Bing yet"}})
+    for n in range(60):  # 60 days: current 28 = 2 clicks/day, previous 28 = 1 click/day
+        d = (today - timedelta(days=n + 2)).isoformat()
+        c = 2 if n < 28 else 1
+        s.put("gsc_page_daily", doc_id(d, urls[0]), {"day": d, "url": urls[0], "clicks": c, "impressions": 10 * c, "language": "en"})
+        s.put("gsc_daily", doc_id(d, "q"), {"day": d, "url": urls[0], "query": "konsolidering", "branded": False,
+                                            "clicks": c, "impressions": 10 * c, "position": 9.0})
+        s.put("gsc_daily", doc_id(d, "b"), {"day": d, "url": urls[0], "query": "corvenia", "branded": True,
+                                            "clicks": 0, "impressions": 3, "position": 1.0})
+        s.put("bing_daily", doc_id("site", d), {"day": d, "kind": "site", "clicks": 1, "impressions": 4})
+    yield TestClient(main.app), s
+
+
+def test_scorecard_numbers(client):
+    c, _ = client
+    sc = c.get("/api/scorecard?days=28").json()["tiles"]
+    assert sc["google_clicks"]["value"] == 56 and sc["google_clicks"]["prev"] == 28
+    assert sc["nonbranded_impressions"]["value"] == 560
+    assert sc["bing_clicks"]["value"] == 28
+    assert sc["indexed_google"]["value"] == 1.0 and sc["indexed_bing"]["value"] == 0.5
+
+
+def test_pages_render(client):
+    c, _ = client
+    for path in ("/", "/?days=7", "/coverage", "/performance?days=90", "/changes"):
+        r = c.get(path)
+        assert r.status_code == 200, path
+    assert "Resubmit to Bing" in c.get("/coverage").text
+
+
+def test_resubmit_writes_change(client, monkeypatch):
+    c, s = client
+
+    class FakeBing:
+        enabled = True
+
+        def submit(self, urls):
+            return {"ok": True, "detail": None, "count": len(urls)}
+
+    monkeypatch.setattr(main, "BingClient", FakeBing)
+    url = "https://www.corvenia.com/no-no/konsolidering"
+    r = c.post("/api/resubmit", json={"url": url}, headers={"X-Goog-Authenticated-User-Email": "accounts.google.com:a@b.c"})
+    assert r.status_code == 200 and r.json()["ok"]
+    rows = s.query("changes")
+    assert len(rows) == 1 and rows[0]["type"] == "submit" and rows[0]["actor"] == "a@b.c" and rows[0]["url"] == url
+    assert s.get("url_inventory", url)["bing"]["submitted_at"]
+    assert c.post("/api/resubmit", json={"url": "https://www.corvenia.com/nope"}).status_code == 404

@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block title %}Scorecard{% endblock %}
+{% block period %}{% include "_period.html" %}{% endblock %}
+{% block content %}
+{% macro tile(t, label, fmt="num") %}
+  <div class="tile {{ 'empty' if not t or t.value is none }}">
+    <div class="label">{{ label }}</div>
+    {% if t and t.value is not none %}
+      <div class="value">{{ t.value | pct if fmt == "pct" else t.value | num }}</div>
+      {% if fmt == "pct" %}
+        <div class="sub">{{ t.count }} of {{ t.total }} URLs
+          {% if t.prev is not none %} · was {{ t.prev | pct }} on {{ t.prev_day }}{% else %} · no snapshot {{ days }} days ago yet{% endif %}</div>
+      {% else %}
+        <div class="sub"><span class="chg {{ 'up' if (t.pct or 0) >= 0 else 'down' }}">{{ t.pct | delta }}</span>
+          prev {{ t.prev | num }} · {{ t.window[0] }} – {{ t.window[1] }}</div>
+      {% endif %}
+      <div class="src">{{ t.source }}</div>
+    {% else %}
+      <div class="value">—</div><div class="sub">{{ t.source if t else "no data collected yet" }}</div>
+    {% endif %}
+  </div>
+{% endmacro %}
+<h1>Scorecard</h1>
+<section class="tiles">
+  {{ tile(sc.tiles.get("google_clicks"), "Google clicks") }}
+  {{ tile(sc.tiles.get("bing_clicks"), "Bing clicks") }}
+  {{ tile(sc.tiles.get("nonbranded_impressions"), "Non-branded impressions") }}
+  {{ tile(sc.tiles.get("indexed_google"), "Indexed rate · Google", "pct") }}
+  {{ tile(sc.tiles.get("indexed_bing"), "Indexed rate · Bing", "pct") }}
+  {{ tile(sc.tiles.get("ai_sessions"), "AI-referred sessions") }}
+  <div class="tile empty"><div class="label">Priority-cluster position</div><div class="value">—</div><div class="sub">Phase 2 · needs the topic-cluster keyword list</div></div>
+  <div class="tile empty"><div class="label">AI citation share</div><div class="value">—</div><div class="sub">Phase 3 · AI-answer sampling</div></div>
+  <div class="tile empty"><div class="label">Conversions (organic + AI)</div><div class="value">—</div><div class="sub">Open: demo request, contact form, or both?</div></div>
+</section>
+{% endblock %}

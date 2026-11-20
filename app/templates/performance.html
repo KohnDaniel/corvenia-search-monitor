@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block title %}Search performance{% endblock %}
+{% block period %}{% include "_period.html" %}{% endblock %}
+{% block content %}
+<h1>Search performance</h1>
+<p class="muted">Google and Bing side by side, never summed. Vertical marks on the trend lines are change-log events (publish, submit, fix).</p>
+<div class="engines">
+{% for name, e in [("Google", perf.google), ("Bing", perf.bing)] %}
+  <section class="engine">
+    <h2>{{ name }}</h2>
+    {% if e %}
+      <p class="muted">{{ e.window[0] }} – {{ e.window[1] }}{% if name == "Bing" %} · Bing reports in its own buckets; dates as given{% endif %}</p>
+      <div class="kpis">
+        <div><b>{{ e.clicks.value | num }}</b> clicks <span class="chg {{ 'up' if (e.clicks.pct or 0) >= 0 else 'down' }}">{{ e.clicks.pct | delta }}</span></div>
+        <div><b>{{ e.impressions.value | num }}</b> impressions <span class="chg {{ 'up' if (e.impressions.pct or 0) >= 0 else 'down' }}">{{ e.impressions.pct | delta }}</span></div>
+      </div>
+      {{ charts.trend_svg(e.trend, perf.markers, name ~ " clicks per day") | safe }}
+      <div class="splits">
+        <table class="data mini"><thead><tr><th>Branded?</th><th>Clicks</th><th>Impr.</th></tr></thead>
+          <tbody>{% for s in e.branded %}<tr><td>{{ s.label }}</td><td class="n">{{ s.clicks | num }}</td><td class="n">{{ s.impressions | num }}</td></tr>{% endfor %}</tbody></table>
+        <table class="data mini"><thead><tr><th>Language</th><th>Clicks</th><th>Impr.</th></tr></thead>
+          <tbody>{% for s in e.language %}<tr><td>{{ {"en": "English", "no": "Norwegian", "sv": "Swedish"}.get(s.label, s.label) }}</td><td class="n">{{ s.clicks | num }}</td><td class="n">{{ s.impressions | num }}</td></tr>{% endfor %}</tbody></table>
+      </div>
+      {% if name == "Google" and e.anonymised_clicks %}<p class="muted">{{ e.anonymised_clicks | num }} clicks come from anonymised queries: they count in page totals but not in query rows.</p>{% endif %}
+      <details open><summary>Top queries</summary>
+        <table class="data"><thead><tr><th>Query</th><th>Clicks</th><th>Impr.</th><th>CTR</th><th>Pos.</th></tr></thead>
+          <tbody>{% for r in e.queries %}<tr><td>{{ r.key }}</td><td class="n">{{ r.clicks | num }}</td><td class="n">{{ r.impressions | num }}</td><td class="n">{{ r.ctr | pct }}</td><td class="n">{{ r.position | pos }}</td></tr>{% else %}<tr><td colspan="5" class="muted">none</td></tr>{% endfor %}</tbody></table>
+      </details>
+      <details><summary>Top landing pages</summary>
+        <table class="data"><thead><tr><th>Page</th><th>Clicks</th><th>Impr.</th><th>CTR</th><th>Pos.</th></tr></thead>
+          <tbody>{% for r in e.pages %}<tr><td class="url">{{ r.key }}</td><td class="n">{{ r.clicks | num }}</td><td class="n">{{ r.impressions | num }}</td><td class="n">{{ r.ctr | pct }}</td><td class="n">{{ r.position | pos }}</td></tr>{% else %}<tr><td colspan="5" class="muted">none</td></tr>{% endfor %}</tbody></table>
+      </details>
+    {% else %}
+      <p class="muted">No {{ name }} data collected yet.</p>
+    {% endif %}
+  </section>
+{% endfor %}
+</div>
+{% endblock %}

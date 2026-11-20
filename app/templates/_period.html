@@ -1,0 +1,4 @@
+<div class="period">
+  {% for p in periods %}<a href="?days={{ p }}" class="{{ 'on' if p == days }}">{{ p }} days</a>{% endfor %}
+  <span class="muted">vs. the previous {{ days }} days</span>
+</div>

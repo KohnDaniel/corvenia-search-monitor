@@ -1,0 +1,277 @@
+"""Read-side views: every 7/28/90-day figure is computed here from raw daily rows.
+
+Rules kept from the spec:
+  * One definition and one source per metric; Google, Bing and Clarity are never summed together.
+  * Windows end at each source's own latest day (GSC lags ~2 days, Bing aggregates), so the
+    current period is "last N days with data" for that source, compared with the N days before.
+  * Firestore queries use a single range filter on `day`; everything else is filtered here,
+    so no composite indexes are needed.
+"""
+
+from __future__ import annotations
+
+import time
+from collections import defaultdict
+from datetime import date, datetime, timedelta, timezone
+
+from core.store import Store
+
+_cache: dict[tuple, tuple[float, object]] = {}
+CACHE_SECONDS = 300
+
+
+def cached(key: tuple, fn):
+    hit = _cache.get(key)
+    if hit and time.time() - hit[0] < CACHE_SECONDS:
+        return hit[1]
+    val = fn()
+    _cache[key] = (time.time(), val)
+    return val
+
+
+def clear_cache() -> None:
+    _cache.clear()
+
+
+def _d(s: str) -> date:
+    return date.fromisoformat(s[:10])
+
+
+def windows(end: date, days: int) -> tuple[tuple[str, str], tuple[str, str]]:
+    cur = (end - timedelta(days=days - 1), end)
+    prev = (cur[0] - timedelta(days=days), cur[0] - timedelta(days=1))
+    return (cur[0].isoformat(), cur[1].isoformat()), (prev[0].isoformat(), prev[1].isoformat())
+
+
+def _rows_since(store: Store, coll: str, start: str) -> list[dict]:
+    return cached((coll, start), lambda: store.query(coll, [("day", ">=", start)]))
+
+
+def _latest_day(rows: list[dict]) -> date | None:
+    days = [r["day"] for r in rows if r.get("day")]
+    return _d(max(days)) if days else None
+
+
+def _in(r: dict, w: tuple[str, str]) -> bool:
+    return w[0] <= r["day"] <= w[1]
+
+
+def delta(cur: float | None, prev: float | None) -> dict:
+    if cur is None:
+        return {"value": None, "prev": prev, "pct": None}
+    pct = None if not prev else (cur - prev) / prev * 100
+    return {"value": cur, "prev": prev, "pct": pct}
+
+
+# ------------------------------------------------------------------ indexed rate
+
+def active_inventory(store: Store) -> list[dict]:
+    return [e for e in cached(("inv",), lambda: store.query("url_inventory")) if not e.get("removed_from_sitemap")]
+
+
+def indexed_rate_on(store: Store, day: str | None) -> dict:
+    """{engine: rate} from the index_status snapshot on `day` (or the nearest earlier snapshot)."""
+    if day is None:
+        return {}
+    since = (_d(day) - timedelta(days=10)).isoformat()
+    rows = [r for r in _rows_since(store, "index_status", since) if r["day"] <= day]
+    if not rows:
+        return {}
+    snap_day = max(r["day"] for r in rows)
+    out = {}
+    for eng in ("google", "bing"):
+        rs = [r for r in rows if r["day"] == snap_day and r["engine"] == eng]
+        if rs:
+            out[eng] = sum(r["status"] == "indexed" for r in rs) / len(rs)
+    out["day"] = snap_day
+    return out
+
+
+def indexed_now(store: Store) -> dict:
+    inv = active_inventory(store)
+    n = len(inv)
+    res = {"total": n}
+    for eng in ("google", "bing"):
+        k = sum((e.get(eng) or {}).get("status") == "indexed" for e in inv)
+        res[eng] = {"indexed": k, "rate": (k / n) if n else None}
+    return res
+
+
+# ------------------------------------------------------------------ scorecard
+
+def scorecard(store: Store, days: int = 28) -> dict:
+    today = datetime.now(timezone.utc).date()
+    start = (today - timedelta(days=2 * days + 10)).isoformat()
+
+    gp = _rows_since(store, "gsc_page_daily", start)
+    gq = _rows_since(store, "gsc_daily", start)
+    bd = [r for r in _rows_since(store, "bing_daily", start) if r.get("kind") == "site"]
+    cl = _rows_since(store, "clarity_daily", start)
+
+    tiles = {}
+    g_end = _latest_day(gp)
+    if g_end:
+        cur, prev = windows(g_end, days)
+        tiles["google_clicks"] = {**delta(sum(r["clicks"] for r in gp if _in(r, cur)),
+                                          sum(r["clicks"] for r in gp if _in(r, prev)) or None),
+                                  "window": cur, "source": "Google Search Console (page totals)"}
+        nb = [r for r in gq if not r.get("branded")]
+        tiles["nonbranded_impressions"] = {**delta(sum(r["impressions"] for r in nb if _in(r, cur)),
+                                                   sum(r["impressions"] for r in nb if _in(r, prev)) or None),
+                                           "window": cur,
+                                           "source": "Google, query rows only (anonymised queries excluded)"}
+    b_end = _latest_day(bd)
+    if b_end:
+        cur, prev = windows(b_end, days)
+        tiles["bing_clicks"] = {**delta(sum(r["clicks"] for r in bd if _in(r, cur)),
+                                        sum(r["clicks"] for r in bd if _in(r, prev)) or None),
+                                "window": cur, "source": "Bing Webmaster (site traffic)"}
+
+    now_rate = indexed_now(store)
+    then = indexed_rate_on(store, (today - timedelta(days=days)).isoformat())
+    for eng in ("google", "bing"):
+        tiles[f"indexed_{eng}"] = {**delta(now_rate[eng]["rate"], then.get(eng)),
+                                   "count": now_rate[eng]["indexed"], "total": now_rate["total"],
+                                   "prev_day": then.get("day"),
+                                   "source": f"Indexing register ({'URL Inspection' if eng == 'google' else 'Bing GetUrlInfo'})"}
+
+    ai = [r for r in cl if r.get("ai_referred")]
+    c_end = _latest_day(cl)
+    if c_end:
+        cur, prev = windows(c_end, days)
+        tiles["ai_sessions"] = {**delta(sum(r.get("sessions", 0) for r in ai if _in(r, cur)),
+                                        sum(r.get("sessions", 0) for r in ai if _in(r, prev)) or None),
+                                "window": cur, "source": "Clarity (Source = AI assistant domain)"}
+    return {"days": days, "tiles": tiles}
+
+
+# ------------------------------------------------------------------ index coverage
+
+def coverage(store: Store) -> dict:
+    now = datetime.now(timezone.utc)
+    inv = active_inventory(store)
+    gaps = []
+    for e in inv:
+        g, b = e.get("google") or {}, e.get("bing") or {}
+        if g.get("status") == "indexed" and b.get("status") == "indexed":
+            continue
+        sub = b.get("submitted_at") or b.get("first_submitted_at")
+        first = e.get("first_seen")
+        ref = sub or first
+        gaps.append({
+            "url": e["url"], "path": e.get("path") or e["url"], "language": e.get("language"),
+            "google": g.get("status", "unknown"), "google_reason": g.get("detail") or g.get("coverage"),
+            "google_last_crawl": g.get("last_crawl"),
+            "bing": b.get("status", "unknown"), "bing_reason": b.get("detail"),
+            "bing_last_crawl": b.get("last_crawled"),
+            "submitted_at": sub,
+            "days_since_submit": (now - datetime.fromisoformat(ref.replace("Z", "+00:00"))).days if ref else None,
+            "precheck_problem": (e.get("precheck") or {}).get("problem"),
+        })
+    gaps.sort(key=lambda x: (x["google"] == "indexed", -(x["days_since_submit"] or 0)))
+    counts = indexed_now(store)
+    actions = [a for a in store.query("actions") if a.get("status") in ("open", "in_progress")]
+    return {"total": counts["total"], "google": counts["google"], "bing": counts["bing"],
+            "gaps": gaps, "open_actions": actions}
+
+
+# ------------------------------------------------------------------ search performance
+
+def performance(store: Store, days: int = 28) -> dict:
+    today = datetime.now(timezone.utc).date()
+    start = (today - timedelta(days=2 * days + 10)).isoformat()
+    gp = _rows_since(store, "gsc_page_daily", start)
+    gq = _rows_since(store, "gsc_daily", start)
+    bd = _rows_since(store, "bing_daily", start)
+    out: dict = {"days": days, "google": None, "bing": None}
+
+    g_end = _latest_day(gp)
+    if g_end:
+        cur, prev = windows(g_end, days)
+        q_cur = [r for r in gq if _in(r, cur)]
+        out["google"] = {
+            "window": cur, "prev_window": prev,
+            "clicks": delta(sum(r["clicks"] for r in gp if _in(r, cur)), sum(r["clicks"] for r in gp if _in(r, prev)) or None),
+            "impressions": delta(sum(r["impressions"] for r in gp if _in(r, cur)),
+                                 sum(r["impressions"] for r in gp if _in(r, prev)) or None),
+            "branded": _split(q_cur, lambda r: "branded" if r.get("branded") else "non-branded"),
+            "language": _split([r for r in gp if _in(r, cur)], lambda r: r.get("language") or "en"),
+            "queries": _top(q_cur, "query"),
+            "pages": _top([r for r in gp if _in(r, cur)], "url"),
+            "anonymised_clicks": sum(r["clicks"] for r in gp if _in(r, cur)) - sum(r["clicks"] for r in q_cur),
+            "trend": _trend(gp, prev[0], cur[1]),
+        }
+    bs = [r for r in bd if r.get("kind") == "site"]
+    b_end = _latest_day(bs) or _latest_day(bd)
+    if b_end:
+        cur, prev = windows(b_end, days)
+        bq = [r for r in bd if r.get("kind") == "query" and _in(r, cur)]
+        bp = [r for r in bd if r.get("kind") == "page" and _in(r, cur)]
+        out["bing"] = {
+            "window": cur, "prev_window": prev,
+            "clicks": delta(sum(r["clicks"] for r in bs if _in(r, cur)), sum(r["clicks"] for r in bs if _in(r, prev)) or None),
+            "impressions": delta(sum(r["impressions"] for r in bs if _in(r, cur)),
+                                 sum(r["impressions"] for r in bs if _in(r, prev)) or None),
+            "branded": _split(bq, lambda r: "branded" if r.get("branded") else "non-branded"),
+            "language": _split(bp, lambda r: r.get("language") or "en"),
+            "queries": _top(bq, "query"),
+            "pages": _top(bp, "url"),
+            "trend": _trend(bs, prev[0], cur[1]),
+        }
+    since = out["google"]["prev_window"][0] if out["google"] else (today - timedelta(days=2 * days)).isoformat()
+    out["markers"] = sorted({c["day"] for c in store.query("changes", [("day", ">=", since)])
+                             if c.get("type") in ("publish", "submit", "fix", "metadata")})
+    return out
+
+
+def _split(rows: list[dict], key) -> list[dict]:
+    agg: dict[str, dict] = defaultdict(lambda: {"clicks": 0, "impressions": 0})
+    for r in rows:
+        a = agg[key(r)]
+        a["clicks"] += r.get("clicks", 0)
+        a["impressions"] += r.get("impressions", 0)
+    return [{"label": k, **v} for k, v in sorted(agg.items(), key=lambda kv: -kv[1]["impressions"])]
+
+
+def _top(rows: list[dict], field: str, n: int = 25) -> list[dict]:
+    agg: dict[str, dict] = defaultdict(lambda: {"clicks": 0, "impressions": 0, "pos_w": 0.0})
+    for r in rows:
+        a = agg[r.get(field) or ""]
+        a["clicks"] += r.get("clicks", 0)
+        a["impressions"] += r.get("impressions", 0)
+        a["pos_w"] += (r.get("position") or 0) * r.get("impressions", 0)
+    out = []
+    for k, a in agg.items():
+        imp = a["impressions"]
+        out.append({"key": k, "clicks": a["clicks"], "impressions": imp,
+                    "ctr": (a["clicks"] / imp) if imp else 0,
+                    "position": (a["pos_w"] / imp) if imp else None})
+    out.sort(key=lambda x: (-x["clicks"], -x["impressions"]))
+    return out[:n]
+
+
+def _trend(rows: list[dict], start: str, end: str) -> list[tuple[str, int]]:
+    by: dict[str, int] = defaultdict(int)
+    for r in rows:
+        if start <= r["day"] <= end:
+            by[r["day"]] += r.get("clicks", 0)
+    return sorted(by.items())
+
+
+# ------------------------------------------------------------------ change log + runs
+
+def change_log(store: Store, kind: str | None = None, limit: int = 300) -> list[dict]:
+    rows = store.query("changes", order_by="date", descending=True, limit=limit * 2 if kind else limit)
+    if kind:
+        rows = [r for r in rows if r.get("type") == kind][:limit]
+    return rows
+
+
+def last_runs(store: Store) -> list[dict]:
+    runs = [r for r in store.query("collector_runs") if r.get("kind") != "state" and r.get("started")]
+    latest: dict[str, dict] = {}
+    for r in runs:
+        c = r["collector"]
+        if c not in latest or r["started"] > latest[c]["started"]:
+            latest[c] = r
+    return sorted(latest.values(), key=lambda r: r["collector"])

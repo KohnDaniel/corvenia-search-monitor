@@ -1,0 +1,63 @@
+name: Deploy to Cloud Run
+
+# Push to main deploys the web app and updates the collectors job image.
+# The daily monitor's own result commits (data/, docs/) do not trigger a deploy.
+on:
+  push:
+    branches: [main]
+    paths-ignore:
+      - "data/**"
+      - "docs/**"
+      - "monitor.py"
+      - "requirements.txt"
+      - ".github/workflows/daily.yml"
+      - "**.md"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  id-token: write
+
+concurrency:
+  group: deploy
+  cancel-in-progress: false
+
+env:
+  PROJECT: corvenia-search-monitor
+  REGION: europe-north1
+  IMAGE: europe-north1-docker.pkg.dev/corvenia-search-monitor/corvenia/marketing-control
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r infra/requirements.txt pytest httpx
+      - run: python -m pytest -q
+        env:
+          DISABLE_SECRET_MANAGER: "1"
+
+  deploy:
+    needs: test
+    # Skipped until infra/setup.sh github has run and the repo variable GCP_WIF_PROVIDER is set.
+    if: vars.GCP_WIF_PROVIDER != ''
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: google-github-actions/auth@v2
+        with:
+          workload_identity_provider: ${{ vars.GCP_WIF_PROVIDER }}
+          service_account: github-deployer@corvenia-search-monitor.iam.gserviceaccount.com
+      - uses: google-github-actions/setup-gcloud@v2
+      - run: gcloud auth configure-docker ${REGION}-docker.pkg.dev --quiet
+      - name: Build and push
+        run: |
+          docker build -f infra/Dockerfile -t ${IMAGE}:${GITHUB_SHA} -t ${IMAGE}:latest .
+          docker push --all-tags ${IMAGE}
+      - name: Deploy service (keeps IAP, env and service account as configured by infra/setup.sh)
+        run: gcloud run deploy marketing-control --image ${IMAGE}:${GITHUB_SHA} --region ${REGION} --project ${PROJECT}
+      - name: Update collectors job image
+        run: gcloud run jobs update collectors --image ${IMAGE}:${GITHUB_SHA} --region ${REGION} --project ${PROJECT}
