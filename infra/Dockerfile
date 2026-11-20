@@ -12,6 +12,7 @@ RUN pip install --no-cache-dir -r /srv/infra/requirements.txt
 COPY core /srv/core
 COPY collectors /srv/collectors
 COPY app /srv/app
+COPY config /srv/config
 # Snapshot of the GitHub Actions register, for the one-off `python -m collectors import-legacy`.
 COPY data/state.json /srv/data/state.json
 

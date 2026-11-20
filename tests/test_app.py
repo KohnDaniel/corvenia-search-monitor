@@ -44,9 +44,26 @@ def test_scorecard_numbers(client):
     assert sc["indexed_google"]["value"] == 1.0 and sc["indexed_bing"]["value"] == 0.5
 
 
+def test_clusters_and_opportunities(client):
+    from core import clusters as cl
+
+    _, s = client
+    assert cl.classify("Konsolidering av konsernregnskap") == "consolidation"
+    assert cl.classify("corvenia ab") == "brand"
+    assert cl.classify("real-time intercompany eliminations") == "intercompany"
+    assert cl.classify("weather oslo") == cl.UNCLASSIFIED
+    opp = queries.opportunities(s, 28)
+    assert [r["query"] for r in opp["rows"]] == ["konsolidering"]  # pos 9, non-brand; "corvenia" excluded
+    assert opp["rows"][0]["cluster"] == "consolidation" and opp["rows"][0]["priority"]
+    tiles = queries.scorecard(s, 28)["tiles"]
+    assert tiles["priority_position"]["value"] == pytest.approx(9.0)
+    perf = queries.performance(s, 28)["google"]["clusters"]
+    assert {c["id"] for c in perf} == {"consolidation", "brand"}
+
+
 def test_pages_render(client):
     c, _ = client
-    for path in ("/", "/?days=7", "/coverage", "/performance?days=90", "/changes"):
+    for path in ("/", "/?days=7", "/coverage", "/performance?days=90", "/opportunities", "/opportunities?days=90", "/changes"):
         r = c.get(path)
         assert r.status_code == 200, path
     assert "Resubmit to Bing" in c.get("/coverage").text

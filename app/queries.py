@@ -14,6 +14,7 @@ import time
 from collections import defaultdict
 from datetime import date, datetime, timedelta, timezone
 
+from core import clusters as cl
 from core.store import Store
 
 _cache: dict[tuple, tuple[float, object]] = {}
@@ -106,7 +107,7 @@ def scorecard(store: Store, days: int = 28) -> dict:
     gp = _rows_since(store, "gsc_page_daily", start)
     gq = _rows_since(store, "gsc_daily", start)
     bd = [r for r in _rows_since(store, "bing_daily", start) if r.get("kind") == "site"]
-    cl = _rows_since(store, "clarity_daily", start)
+    clr = _rows_since(store, "clarity_daily", start)
 
     tiles = {}
     g_end = _latest_day(gp)
@@ -135,14 +136,50 @@ def scorecard(store: Store, days: int = 28) -> dict:
                                    "prev_day": then.get("day"),
                                    "source": f"Indexing register ({'URL Inspection' if eng == 'google' else 'Bing GetUrlInfo'})"}
 
-    ai = [r for r in cl if r.get("ai_referred")]
-    c_end = _latest_day(cl)
+    if g_end:  # impression-weighted average position across the priority clusters' queries (Google)
+        cur, prev = windows(g_end, days)
+        prio = cl.priority_ids()
+        pq = [r for r in gq if cl.classify(r.get("query", "")) in prio]
+        pc, pp = _wpos([r for r in pq if _in(r, cur)]), _wpos([r for r in pq if _in(r, prev)])
+        tiles["priority_position"] = {"value": pc, "prev": pp, "change": None if pc is None or pp is None else pc - pp,
+                                      "window": cur, "source": f"Google, priority clusters (list {cl.version()})"}
+
+    ai = [r for r in clr if r.get("ai_referred")]
+    c_end = _latest_day(clr)
     if c_end:
         cur, prev = windows(c_end, days)
         tiles["ai_sessions"] = {**delta(sum(r.get("sessions", 0) for r in ai if _in(r, cur)),
                                         sum(r.get("sessions", 0) for r in ai if _in(r, prev)) or None),
                                 "window": cur, "source": "Clarity (Source = AI assistant domain)"}
     return {"days": days, "tiles": tiles}
+
+
+def _wpos(rows: list[dict]) -> float | None:
+    imp = sum(r.get("impressions", 0) for r in rows)
+    return sum((r.get("position") or 0) * r.get("impressions", 0) for r in rows) / imp if imp else None
+
+
+def _cluster_table(rows: list[dict], cur: tuple[str, str], prev: tuple[str, str]) -> list[dict]:
+    """Per topic cluster: clicks, impressions, impression-weighted position, current vs previous window."""
+    by: dict[str, dict[str, list[dict]]] = defaultdict(lambda: {"cur": [], "prev": []})
+    for r in rows:
+        k = "cur" if _in(r, cur) else "prev" if _in(r, prev) else None
+        if k:
+            by[cl.classify(r.get("query", ""))][k].append(r)
+    out = []
+    for c in cl.clusters():
+        b = by.get(c["id"], {"cur": [], "prev": []})
+        ci, pi = sum(r["impressions"] for r in b["cur"]), sum(r["impressions"] for r in b["prev"])
+        if not ci and not pi:
+            continue
+        pos, ppos = _wpos(b["cur"]), _wpos(b["prev"])
+        out.append({**c, "clicks": sum(r["clicks"] for r in b["cur"]), "prev_clicks": sum(r["clicks"] for r in b["prev"]),
+                    "impressions": ci, "prev_impressions": pi,
+                    "impr_pct": delta(ci, pi or None)["pct"],
+                    "position": pos, "prev_position": ppos,
+                    "pos_change": None if pos is None or ppos is None else pos - ppos,
+                    "queries": len({r["query"] for r in b["cur"]})})
+    return out
 
 
 # ------------------------------------------------------------------ index coverage
@@ -206,6 +243,7 @@ def performance(store: Store, days: int = 28) -> dict:
             "pages": _top([r for r in gp if _in(r, cur)], "url"),
             "anonymised_clicks": sum(r["clicks"] for r in gp if _in(r, cur)) - sum(r["clicks"] for r in q_cur),
             "trend": _trend(gp, prev[0], cur[1]),
+            "clusters": _cluster_table(gq, cur, prev),
         }
     bs = [r for r in bd if r.get("kind") == "site"]
     b_end = _latest_day(bs) or _latest_day(bd)
@@ -223,6 +261,7 @@ def performance(store: Store, days: int = 28) -> dict:
             "queries": _top(bq, "query"),
             "pages": _top(bp, "url"),
             "trend": _trend(bs, prev[0], cur[1]),
+            "clusters": _cluster_table([r for r in bd if r.get("kind") == "query"], cur, prev),
         }
     since = out["google"]["prev_window"][0] if out["google"] else (today - timedelta(days=2 * days)).isoformat()
     out["markers"] = sorted({c["day"] for c in store.query("changes", [("day", ">=", since)])
@@ -262,6 +301,51 @@ def _trend(rows: list[dict], start: str, end: str) -> list[tuple[str, int]]:
         if start <= r["day"] <= end:
             by[r["day"]] += r.get("clicks", 0)
     return sorted(by.items())
+
+
+# ------------------------------------------------------------------ opportunities
+
+STRIKING_MIN, STRIKING_MAX = 8.0, 20.0
+STRIKING_MIN_IMPRESSIONS_PER_28D = 10  # starting threshold (spec: set once data is in, tune after 4 weeks)
+
+
+def opportunities(store: Store, days: int = 28) -> dict:
+    """Striking distance (spec module 4): non-brand queries averaging position 8-20 with enough impressions."""
+    today = datetime.now(timezone.utc).date()
+    gq = _rows_since(store, "gsc_daily", (today - timedelta(days=2 * days + 10)).isoformat())
+    end = _latest_day(gq)
+    if not end:
+        return {"days": days, "rows": [], "window": None, "min_impressions": None}
+    cur, prev = windows(end, days)
+    min_imp = max(3, round(STRIKING_MIN_IMPRESSIONS_PER_28D * days / 28))
+    agg: dict[str, dict] = {}
+    for r in gq:
+        k = "cur" if _in(r, cur) else "prev" if _in(r, prev) else None
+        if not k:
+            continue
+        a = agg.setdefault(r["query"], {"cur": [], "prev": []})
+        a[k].append(r)
+    rows = []
+    for q, a in agg.items():
+        cid = cl.classify(q)
+        if cid in ("brand", "names") or not a["cur"]:
+            continue
+        imp = sum(r["impressions"] for r in a["cur"])
+        pos = _wpos(a["cur"])
+        if imp < min_imp or pos is None or not (STRIKING_MIN <= pos <= STRIKING_MAX):
+            continue
+        pages: dict[str, int] = defaultdict(int)
+        for r in a["cur"]:
+            pages[r["url"]] += r["impressions"]
+        ppos = _wpos(a["prev"])
+        clicks = sum(r["clicks"] for r in a["cur"])
+        rows.append({"query": q, "cluster": cid, "cluster_label": cl.label(cid), "priority": cid in cl.priority_ids(),
+                     "impressions": imp, "clicks": clicks, "ctr": clicks / imp if imp else 0, "position": pos,
+                     "prev_position": ppos, "pos_change": None if ppos is None else pos - ppos,
+                     "page": max(pages, key=pages.get)})
+    rows.sort(key=lambda r: (not r["priority"], -r["impressions"]))
+    return {"days": days, "rows": rows, "window": cur, "min_impressions": min_imp,
+            "range": (STRIKING_MIN, STRIKING_MAX), "list_version": cl.version()}
 
 
 # ------------------------------------------------------------------ change log + runs

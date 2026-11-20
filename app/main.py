@@ -34,6 +34,8 @@ templates.env.filters["pct"] = lambda v: "—" if v is None else f"{v * 100:.1f}
 templates.env.filters["delta"] = lambda v: "" if v is None else f"{'+' if v >= 0 else ''}{v:.0f} %"
 templates.env.filters["pos"] = lambda v: "—" if v is None else f"{v:.1f}"
 templates.env.filters["day"] = lambda v: (v or "")[:10] or "—"
+# Position change: lower is better, so a negative change is an improvement.
+templates.env.filters["posdelta"] = lambda v: "" if v is None else f"{'▲' if v < 0 else '▼' if v > 0 else '='} {abs(v):.1f}"
 
 PERIODS = (7, 28, 90)
 
@@ -79,6 +81,12 @@ def coverage_page(request: Request):
 def performance_page(request: Request):
     days = period(request)
     return render(request, "performance.html", perf=queries.performance(get_store(), days))
+
+
+@app.get("/opportunities", response_class=HTMLResponse)
+def opportunities_page(request: Request):
+    days = period(request)
+    return render(request, "opportunities.html", opp=queries.opportunities(get_store(), days))
 
 
 @app.get("/changes", response_class=HTMLResponse)

@@ -28,8 +28,19 @@
   {{ tile(sc.tiles.get("indexed_google"), "Indexed rate · Google", "pct") }}
   {{ tile(sc.tiles.get("indexed_bing"), "Indexed rate · Bing", "pct") }}
   {{ tile(sc.tiles.get("ai_sessions"), "AI-referred sessions") }}
-  <div class="tile empty"><div class="label">Priority-cluster position</div><div class="value">—</div><div class="sub">Phase 2 · needs the topic-cluster keyword list</div></div>
+  {% set pp = sc.tiles.get("priority_position") %}
+  <div class="tile {{ 'empty' if not pp or pp.value is none }}">
+    <div class="label">Priority-cluster position</div>
+    {% if pp and pp.value is not none %}
+      <div class="value">{{ pp.value | pos }}</div>
+      <div class="sub"><span class="chg {{ 'up' if (pp.change or 0) <= 0 else 'down' }}">{{ pp.change | posdelta }}</span>
+        prev {{ pp.prev | pos }} · {{ pp.window[0] }} – {{ pp.window[1] }}</div>
+      <div class="src">{{ pp.source }} · lower is better · <a href="/opportunities?days={{ days }}">close to page one →</a></div>
+    {% else %}
+      <div class="value">—</div><div class="sub">No priority-cluster queries in this period</div>
+    {% endif %}
+  </div>
   <div class="tile empty"><div class="label">AI citation share</div><div class="value">—</div><div class="sub">Phase 3 · AI-answer sampling</div></div>
-  <div class="tile empty"><div class="label">Conversions (organic + AI)</div><div class="value">—</div><div class="sub">Open: demo request, contact form, or both?</div></div>
+  <div class="tile empty"><div class="label">Conversions (organic + AI)</div><div class="value">—</div><div class="sub">Deferred: form attribution added once non-branded traffic exists</div></div>
 </section>
 {% endblock %}

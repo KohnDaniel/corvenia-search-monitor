@@ -15,6 +15,20 @@
         <div><b>{{ e.impressions.value | num }}</b> impressions <span class="chg {{ 'up' if (e.impressions.pct or 0) >= 0 else 'down' }}">{{ e.impressions.pct | delta }}</span></div>
       </div>
       {{ charts.trend_svg(e.trend, perf.markers, name ~ " clicks per day") | safe }}
+      {% if e.clusters %}
+      <table class="data clusters">
+        <thead><tr><th>Topic</th><th class="n">Clicks</th><th class="n">Impr.</th><th class="n">vs prev</th><th class="n">Position</th><th class="n">Change</th></tr></thead>
+        <tbody>{% for c in e.clusters %}
+          <tr class="{{ 'prio' if c.priority }}">
+            <td>{{ c.label }}{% if c.priority %} <span class="muted">· priority</span>{% endif %}</td>
+            <td class="n">{{ c.clicks | num }}</td><td class="n">{{ c.impressions | num }}</td>
+            <td class="n"><span class="chg {{ 'up' if (c.impr_pct or 0) >= 0 else 'down' }}">{{ c.impr_pct | delta }}</span></td>
+            <td class="n">{{ c.position | pos }}</td>
+            <td class="n"><span class="chg {{ 'up' if (c.pos_change or 0) <= 0 else 'down' }}">{{ c.pos_change | posdelta }}</span></td>
+          </tr>{% endfor %}
+        </tbody>
+      </table>
+      {% endif %}
       <div class="splits">
         <table class="data mini"><thead><tr><th>Branded?</th><th>Clicks</th><th>Impr.</th></tr></thead>
           <tbody>{% for s in e.branded %}<tr><td>{{ s.label }}</td><td class="n">{{ s.clicks | num }}</td><td class="n">{{ s.impressions | num }}</td></tr>{% endfor %}</tbody></table>

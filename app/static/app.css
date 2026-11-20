@@ -87,6 +87,9 @@ svg.trend .grid { stroke: var(--line); }
 svg.trend .axis { font: 10px var(--sans); fill: var(--muted); }
 svg.trend .marker { stroke: var(--flame); stroke-width: 1; stroke-dasharray: 3 3; }
 
+table.clusters { margin: 10px 0; }
+table.clusters tr.prio td:first-child { font-weight: 500; }
+.tile .src a { color: var(--forest); }
 .tiles.compact { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); }
 .tiles.compact .tile { min-height: 0; }
 .tiles.compact .value { font-size: 28px; }

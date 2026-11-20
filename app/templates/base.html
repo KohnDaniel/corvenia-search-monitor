@@ -10,8 +10,8 @@
 <header class="top">
   <a class="brand" href="/">Corvenia <span>Marketing Control</span></a>
   <nav>
-    {% for href, label in [("/", "Scorecard"), ("/coverage", "Index coverage"), ("/performance", "Search performance"), ("/changes", "Change log")] %}
-      <a href="{{ href }}{% if href in ('/', '/performance') %}?days={{ days }}{% endif %}" class="{{ 'on' if path == href }}">{{ label }}</a>
+    {% for href, label in [("/", "Scorecard"), ("/coverage", "Index coverage"), ("/performance", "Search performance"), ("/opportunities", "Opportunities"), ("/changes", "Change log")] %}
+      <a href="{{ href }}{% if href in ('/', '/performance', '/opportunities') %}?days={{ days }}{% endif %}" class="{{ 'on' if path == href }}">{{ label }}</a>
     {% endfor %}
   </nav>
   <span class="who">{{ user }}</span>

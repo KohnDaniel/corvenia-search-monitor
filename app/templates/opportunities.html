@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block title %}Opportunities{% endblock %}
+{% block period %}{% include "_period.html" %}{% endblock %}
+{% block content %}
+<h1>Opportunities</h1>
+<h2>Close to page one <span class="muted">(striking distance)</span></h2>
+{% if opp.window %}
+<p class="muted">Google searches, excluding brand and names, that average position {{ opp.range[0] | int }}–{{ opp.range[1] | int }}
+  with at least {{ opp.min_impressions }} impressions in {{ opp.window[0] }} – {{ opp.window[1] }}.
+  Priority topics first. Suggested action: strengthen the page with more depth, an FAQ, schema and internal links.
+  Topic list {{ opp.list_version }}.</p>
+<div class="scroll">
+<table class="data">
+  <thead><tr><th>Search</th><th>Topic</th><th class="n">Position</th><th class="n">Change</th><th class="n">Impr.</th><th class="n">Clicks</th><th class="n">CTR</th><th>Page Google shows</th></tr></thead>
+  <tbody>
+  {% for r in opp.rows %}
+    <tr>
+      <td>{{ r.query }}</td>
+      <td>{% if r.priority %}<span class="tag publish">{{ r.cluster_label }}</span>{% else %}<span class="muted">{{ r.cluster_label }}</span>{% endif %}</td>
+      <td class="n">{{ r.position | pos }}</td>
+      <td class="n"><span class="chg {{ 'up' if (r.pos_change or 0) <= 0 else 'down' }}">{{ r.pos_change | posdelta }}</span></td>
+      <td class="n">{{ r.impressions | num }}</td>
+      <td class="n">{{ r.clicks | num }}</td>
+      <td class="n">{{ r.ctr | pct }}</td>
+      <td class="url"><a href="{{ r.page }}" target="_blank" rel="noopener">{{ r.page[24:] or "/" }}</a></td>
+    </tr>
+  {% else %}
+    <tr><td colspan="8" class="muted">No searches in striking distance for this period. Try 90 days.</td></tr>
+  {% endfor %}
+  </tbody>
+</table>
+</div>
+{% else %}
+<p class="muted">No Google query data collected yet.</p>
+{% endif %}
+<p class="muted">Coming in phase 2: high impressions with low CTR (rewrite title and meta), and market terms with no ranking page (DataForSEO).</p>
+{% endblock %}
