@@ -1,0 +1,26 @@
+{
+  "version": "2026-11-20-draft1",
+  "note": "Query -> topic cluster mapping (spec: versioned keyword list, edited by hand; recompute history when it changes). First match wins, in this order. Patterns are lowercase regular expressions matched against the query. DRAFT from 16 months of GSC + Bing queries; owner to confirm.",
+  "clusters": [
+    {"id": "brand", "label": "Brand", "priority": false,
+     "patterns": ["corv[ae]n[iy]?a", "corveina", "corvinia", "corvane", "korvenia", "amplifai"]},
+    {"id": "intercompany", "label": "Intercompany eliminations", "priority": true,
+     "patterns": ["intercompany", "intra-?group", "eliminer", "eliminering", "elimination", "mellomv[æa]rende", "koncerninterna"]},
+    {"id": "consolidation", "label": "Consolidation (konsolidering, konsernregnskap)", "priority": true,
+     "patterns": ["konsolider", "consolidat", "konsernregnskap", "koncernredovisning", "m[åa]nedsslutt", "month[- ]end close", "continuous consolidation"]},
+    {"id": "group_reporting", "label": "Group reporting (konsernrapportering, multi-entity)", "priority": true,
+     "patterns": ["konsernrapport", "koncernrapport", "group reporting", "multi[- ]entity", "multi[- ]country", "portef[øo]ljerapport", "board meeting", "centrali[sz]ing financial data"]},
+    {"id": "erp_connectivity", "label": "ERP connectivity (Tripletex, Visma, PowerOffice, Xledger)", "priority": true,
+     "patterns": ["tripletex", "visma", "poweroffice", "xledger", "fortnox", "business central", "\\berp\\b", "multi[- ]erp"]},
+    {"id": "virtual_ledger", "label": "Virtual group ledger / agentic GL", "priority": true,
+     "patterns": ["virtual (group )?ledger", "general ledger", "agentic", "group ledger"]},
+    {"id": "pe_portfolio", "label": "PE and portfolio CFO reporting", "priority": true,
+     "patterns": ["portco", "portfolio compan", "private equity", "\\bpe\\b", "family office", "familjekontor", "operational alpha", "exit multiple", "multiple expansion", "cost of capital"]},
+    {"id": "real_estate", "label": "Real estate / SPV consolidation", "priority": false,
+     "patterns": ["real estate", "eiendom", "fastighet", "\\bspv\\b", "multi-property", "property"]},
+    {"id": "modules", "label": "Product modules (Consolidate, Monitor, Benchmark)", "priority": true,
+     "patterns": ["consolidate module", "\\bmonitor\\b", "benchmark", "group intelligence"]},
+    {"id": "names", "label": "People, customers and partners (navigational)", "priority": false,
+     "patterns": ["linx", "cube storage", "cube-linx", "qben", "init4u", "valutalive", "d[äa]ckverket", "eleda", "sumledger", "halbesma", "hunvik", "sookermany", "tamboli", "myrstad", "ghatan", "egeland", "mohus", "grandinson"]}
+  ]
+}
