@@ -9,6 +9,7 @@ actions (changes rows). Locally the user is "local-dev".
 
 from __future__ import annotations
 
+import hashlib
 import os
 from datetime import datetime, timezone
 from pathlib import Path
@@ -28,7 +29,9 @@ HERE = Path(__file__).parent
 app = FastAPI(title="Corvenia Marketing Control", docs_url=None, redoc_url=None)
 app.mount("/static", StaticFiles(directory=HERE / "static"), name="static")
 templates = Jinja2Templates(directory=HERE / "templates")
-templates.env.globals.update(charts=charts)
+# Static URLs carry a hash of the files, so a deploy never runs new HTML against a cached old CSS/JS.
+STATIC_VERSION = hashlib.sha1(b"".join((HERE / "static" / f).read_bytes() for f in ("app.css", "app.js"))).hexdigest()[:10]
+templates.env.globals.update(charts=charts, static_version=STATIC_VERSION)
 templates.env.filters["num"] = lambda v: "—" if v is None else f"{v:,.0f}".replace(",", " ")
 templates.env.filters["pct"] = lambda v: "—" if v is None else f"{v * 100:.1f} %"
 templates.env.filters["delta"] = lambda v: "" if v is None else f"{'+' if v >= 0 else ''}{v:.0f} %"

@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{% block title %}Marketing Control{% endblock %} · Corvenia</title>
-  <link rel="stylesheet" href="/static/app.css">
+  <link rel="stylesheet" href="/static/app.css?v={{ static_version }}">
 </head>
 <body>
 <header class="top">
@@ -28,6 +28,6 @@
     <span class="muted">no runs recorded yet</span>
   {% endfor %}
 </footer>
-<script src="/static/app.js" defer></script>
+<script src="/static/app.js?v={{ static_version }}" defer></script>
 </body>
 </html>

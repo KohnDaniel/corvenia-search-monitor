@@ -2,46 +2,66 @@
 {% block title %}Index coverage{% endblock %}
 {% block content %}
 <h1>Index coverage</h1>
-<p class="muted">{{ cov.pages_total }} pages in the sitemap, {{ cov.excluded }} intentionally excluded{% if cov.last_run %} · register updated {{ cov.last_run[:16] | replace("T", " ") }} UTC{% endif %}
-  · New and changed pages are submitted to Bing automatically; pages Bing hasn't crawled 7 days after a submit are resubmitted automatically (see Change log).
-  Google has no submission API: priority pages are queued below for a manual request in Search Console.</p>
+<p class="muted">{{ cov.pages_total }} pages in the sitemap · {{ cov.excluded }} excluded{% if cov.last_run %} · updated {{ cov.last_run[:16] | replace("T", " ") }} UTC{% endif %} · Bing submits are automatic; Google requests are manual (To do). Click a number to list its pages; (i) explains it.</p>
 {% set gc, bc = cov.counts.google, cov.counts.bing %}
-{% macro tile(key, label, value, info, sub="", src="register", sel="") %}
-  <div class="tile click" role="button" tabindex="0" data-tile="{{ key }}" data-src="{{ src }}" data-sel="{{ sel }}" data-label="{{ label }}" aria-expanded="false">
-    <div class="label">{{ label }}
-      <span class="info" tabindex="0" role="note" aria-label="How this is calculated">i<span class="tip">{{ info }}</span></span></div>
-    <div class="value">{{ value }}</div>{% if sub %}<div class="sub">{{ sub }}</div>{% endif %}
-    <div class="more">Show pages ▾</div>
+{% macro tile(key, label, value, info, sub="", src="register", sel="", tone="", full="") %}
+  <div class="tile click {{ tone if value else '' }}" role="button" tabindex="0" data-tile="{{ key }}" data-src="{{ src }}" data-sel="{{ sel }}"
+       data-label="{{ full or label }}" aria-expanded="false" title="Show {{ (full or label) | lower }}">
+    <div class="label"><span>{{ label }}</span>
+      <span class="info" tabindex="0" role="img" aria-label="{{ info }}" data-tip="{{ info }}"></span></div>
+    <div class="value">{{ value }}</div>
+    <div class="sub">{{ sub }}</div>
+    <span class="chev" aria-hidden="true"></span>
   </div>
 {% endmacro %}
-<section class="tiles compact" id="tiles">
-  {{ tile("counted", "Pages counted", cov.total,
-     "Pages in sitemap.xml (read daily by the indexing collector), minus intentional exclusions: the exclusion list below and pages whose pre-check found noindex. Pages removed from the sitemap are not counted. This is the denominator for both indexed %.",
-     cov.excluded ~ " excluded · " ~ cov.removed_from_sitemap ~ " removed from sitemap", sel="x=0") }}
-  {{ tile("g-indexed", "Google indexed", gc.indexed,
-     "Google URL Inspection API: verdict PASS and a coverage state that says indexed. % = Google indexed ÷ pages counted. Each page is inspected 1, 3, 7 and 14 days after it is first seen, then weekly; indexed pages every 30 days; at most 80 inspections per run.",
-     ((gc.indexed / cov.total) | pct if cov.total else "—") ~ " of counted pages", sel="x=0 g=indexed") }}
-  {{ tile("g-pending", "Google pending", gc.pending + gc.unknown,
-     "Counted pages with no verdict yet: not inspected so far (the 80-per-run cap queues the rest for the next run), or Google returned no clear indexed / not-indexed state.",
-     sel="x=0 g=pending,unknown") }}
-  {{ tile("g-not", "Google not indexed", gc.not_indexed + gc.blocked,
-     "Not indexed: URL Inspection verdict FAIL or NEUTRAL, or a coverage state such as 'Crawled – currently not indexed'. Blocked: our pre-check failed (not HTTP 200, or the canonical points elsewhere). The reason is shown per page.",
-     gc.not_indexed ~ " not indexed · " ~ gc.blocked ~ " blocked", sel="x=0 g=not_indexed,blocked") }}
-  {{ tile("b-ok", "Bing crawled OK", bc.indexed,
-     "Bing Webmaster GetUrlInfo: Bing has a crawl date and the crawl got HTTP < 400. Bing's API has no 'indexed' flag, so this is the closest signal. % = crawled OK ÷ pages counted.",
-     ((bc.indexed / cov.total) | pct if cov.total else "—") ~ " of counted pages", sel="x=0 b=indexed") }}
-  {{ tile("b-pending", "Bing pending", bc.pending + bc.unknown,
-     "Counted pages Bing has not crawled yet, or not checked yet (per-run cap). Pages still not crawled 7 days after a submit are resubmitted automatically.",
-     sel="x=0 b=pending,unknown") }}
-  {{ tile("excluded", "Excluded", cov.excluded,
-     "Pages in the sitemap that are intentionally kept out of the index: matched by the exclusion list, or noindex found by the pre-check. They raise no actions and are not in the indexed-% denominator.",
-     cov.excluded_noindex ~ " by noindex", sel="x=1") }}
-  {{ tile("attention", "Needs attention", cov.open_actions | length,
-     "One row per URL where at least one rule fires: blocked (pre-check failed), engine mismatch (indexed in one engine only after 7 days), slow publish (not in Google 72 h after publish), not indexed after 14 days, request indexing. A row closes when no rule fires any more.",
-     "URLs (one row each)", src="actions") }}
-  {{ tile("request", "Request in GSC today", cov.request_queue | length,
-     "Google has no submission API, so these are manual: request indexing in Search Console (URL Inspection → Request indexing), then press Requested. Priority pages: a fix logged in the last 30 days, or a new page not indexed after 72 h, where Google's reason is crawled/discovered not indexed or unknown. At most 10 a day; a page is not asked for again within 14 days.",
-     "manual, about 10 a day", src="actions", sel="rules=request_indexing") }}
+<section class="tilegroups" id="tiles">
+  <div class="tgroup" style="--n:2">
+    <div class="tgroup-h">Register</div>
+    <div class="tgroup-tiles">
+    {{ tile("counted", "Pages counted", cov.total,
+       "Pages in sitemap.xml (read daily by the indexing collector), minus intentional exclusions: the exclusion list below and pages whose pre-check found noindex. Pages removed from the sitemap are not counted. This is the denominator for both indexed %.",
+       cov.removed_from_sitemap ~ " removed from sitemap", sel="x=0") }}
+    {{ tile("excluded", "Excluded", cov.excluded,
+       "Pages in the sitemap that are intentionally kept out of the index: matched by the exclusion list, or noindex found by the pre-check. They raise no actions and are not in the indexed-% denominator.",
+       cov.excluded_noindex ~ " by noindex", sel="x=1", tone="quiet") }}
+    </div>
+  </div>
+  <div class="tgroup" style="--n:3">
+    <div class="tgroup-h">Google</div>
+    <div class="tgroup-tiles">
+    {{ tile("g-indexed", "Indexed", gc.indexed,
+       "Google URL Inspection API: verdict PASS and a coverage state that says indexed. % = Google indexed ÷ pages counted. Each page is inspected 1, 3, 7 and 14 days after it is first seen, then weekly; indexed pages every 30 days; at most 80 inspections per run.",
+       ((gc.indexed / cov.total) | pct if cov.total else "—") ~ " of counted", sel="x=0 g=indexed", tone="good", full="Google indexed") }}
+    {{ tile("g-pending", "Pending", gc.pending + gc.unknown,
+       "Counted pages with no verdict yet: not inspected so far (the 80-per-run cap queues the rest for the next run), or Google returned no clear indexed / not-indexed state.",
+       "no verdict yet", sel="x=0 g=pending,unknown", tone="warn", full="Google pending") }}
+    {{ tile("g-not", "Not indexed", gc.not_indexed + gc.blocked,
+       "Not indexed: URL Inspection verdict FAIL or NEUTRAL, or a coverage state such as 'Crawled – currently not indexed'. Blocked: our pre-check failed (not HTTP 200, or the canonical points elsewhere). The reason is shown per page.",
+       gc.blocked ~ " blocked by pre-check", sel="x=0 g=not_indexed,blocked", tone="bad", full="Google not indexed") }}
+    </div>
+  </div>
+  <div class="tgroup" style="--n:2">
+    <div class="tgroup-h">Bing</div>
+    <div class="tgroup-tiles">
+    {{ tile("b-ok", "Crawled OK", bc.indexed,
+       "Bing Webmaster GetUrlInfo: Bing has a crawl date and the crawl got HTTP < 400. Bing's API has no 'indexed' flag, so this is the closest signal. % = crawled OK ÷ pages counted.",
+       ((bc.indexed / cov.total) | pct if cov.total else "—") ~ " of counted", sel="x=0 b=indexed", tone="good", full="Bing crawled OK") }}
+    {{ tile("b-pending", "Pending", bc.pending + bc.unknown,
+       "Counted pages Bing has not crawled yet, or not checked yet (per-run cap). Pages still not crawled 7 days after a submit are resubmitted automatically.",
+       "resubmitted after 7 days", sel="x=0 b=pending,unknown", tone="warn", full="Bing pending") }}
+    </div>
+  </div>
+  <div class="tgroup" style="--n:2">
+    <div class="tgroup-h">To do</div>
+    <div class="tgroup-tiles">
+    {{ tile("attention", "Needs attention", cov.open_actions | length,
+       "One row per URL where at least one rule fires: blocked (pre-check failed), engine mismatch (indexed in one engine only after 7 days), slow publish (not in Google 72 h after publish), not indexed after 14 days, request indexing. A row closes when no rule fires any more.",
+       "URLs, one row each", src="actions", tone="bad") }}
+    {{ tile("request", "Request in GSC", cov.request_queue | length,
+       "Google has no submission API, so these are manual: request indexing in Search Console (URL Inspection → Request indexing), then press Requested. Priority pages: a fix logged in the last 30 days, or a new page not indexed after 72 h, where Google's reason is crawled/discovered not indexed or unknown. At most 10 a day; a page is not asked for again within 14 days.",
+       "today · max 10 a day", src="actions", sel="rules=request_indexing", tone="act", full="Request in GSC today") }}
+    </div>
+  </div>
 </section>
 <section class="drill" id="drill" hidden>
   <div class="drill-head"><h2 id="drill-title"></h2><button class="link" id="drill-close">Close ✕</button></div>
