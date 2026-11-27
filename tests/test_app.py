@@ -77,3 +77,41 @@ def test_log_change_records_iap_user(client):
     assert r.status_code == 200
     rows = s.query("changes")
     assert len(rows) == 1 and rows[0]["actor"] == "a@b.c" and rows[0]["type"] == "fix"
+
+
+def test_exclusions_endpoints_and_denominator(client):
+    c, s = client
+    u = "https://www.corvenia.com/no-no/signup"
+    s.put("url_inventory", u, {"url": u, "loc": u, "path": "/no-no/signup", "precheck": {"ok": True},
+                               "google": {"status": "not_indexed", "coverage": "Excluded by 'noindex' tag"},
+                               "bing": {"status": "pending"}})
+    queries.clear_cache()
+    sc = c.get("/api/scorecard?days=28").json()["tiles"]
+    assert sc["indexed_google"]["total"] == 2 and sc["indexed_google"]["value"] == 1.0  # seed list excludes /signup
+    page = c.get("/coverage").text
+    assert "Intentional exclusions" in page and "exclusion list: /signup (all locales)" in page
+    r = c.post("/api/exclusions", json={"pattern": "/no-no/konsolidering", "note": "test"},
+               headers={"X-Goog-Authenticated-User-Email": "accounts.google.com:a@b.c"})
+    assert r.status_code == 200
+    queries.clear_cache()
+    assert c.get("/api/coverage").json()["total"] == 1
+    assert c.post("/api/exclusions/remove", json={"pattern": "/no-no/konsolidering"}).status_code == 200
+    assert c.post("/api/exclusions", json={"pattern": "/"}).status_code == 400
+    assert {r["type"] for r in s.query("changes")} == {"exclusion"}
+
+
+def test_one_row_per_url_and_request_button(client):
+    from core import rules
+
+    c, s = client
+    u = "https://www.corvenia.com/no-no/konsolidering"
+    rules.sync_actions(s, [{"rule": "engine_mismatch", "url": u, "detail": "Crawled - currently not indexed", "suggested_fix": "a"},
+                           {"rule": "request_indexing", "url": u, "detail": "Priority: new page", "suggested_fix": rules.REQUEST_FIX}])
+    queries.clear_cache()
+    page = c.get("/coverage").text
+    assert page.count('class="req"') == 1 and "engine mismatch" in page and "request indexing" in page
+    assert c.post("/api/request-indexing", json={"url": u}).status_code == 200
+    a = s.get("actions", rules.action_id(u))
+    assert a["rules"] == ["engine_mismatch"] and a["status"] == "open" and s.get("url_inventory", u)["gsc_requested_at"]
+    assert any(r["type"] == "request_indexing" for r in s.query("changes"))
+    assert c.post("/api/request-indexing", json={"url": "https://www.corvenia.com/nope"}).status_code == 404

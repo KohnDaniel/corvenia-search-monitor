@@ -12,6 +12,7 @@ Collections mirror the spec's tables:
   changes         event: publish | submit | fix | metadata
   actions         alert -> action queue row
   collector_runs  one doc per collector run (status, counts, errors) + collector state
+  settings        app settings edited from the dashboard (settings/exclusions: intentional exclusions)
 
 Writes are upserts keyed by deterministic ids, so re-fetching an overlapping window is idempotent.
 Raw daily rows only; 7/28/90-day figures are computed by the app (spec: aggregates in views).
@@ -32,7 +33,7 @@ Where = tuple[str, str, Any]  # (field, op, value); op in ==, !=, <, <=, >, >=, 
 
 COLLECTIONS = (
     "url_inventory", "index_status", "gsc_daily", "gsc_page_daily", "bing_daily",
-    "clarity_daily", "clarity_raw", "webflow_pages", "changes", "actions", "collector_runs",
+    "clarity_daily", "clarity_raw", "webflow_pages", "changes", "actions", "collector_runs", "settings",
 )
 
 

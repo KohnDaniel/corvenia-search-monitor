@@ -20,6 +20,7 @@ from fastapi.templating import Jinja2Templates
 
 from app import charts, queries
 from collectors.base import OSLO, iso
+from core import exclusions, rules
 from core.store import get_store
 from core.urls import doc_id, normalize
 
@@ -98,7 +99,7 @@ def changes_page(request: Request):
 
 def _log_change(store, url: str, kind: str, note: str, actor: str, **extra) -> dict:
     now = datetime.now(timezone.utc)
-    row = {"date": iso(now), "day": now.astimezone(OSLO).date().isoformat(), "url": normalize(url),
+    row = {"date": iso(now), "day": now.astimezone(OSLO).date().isoformat(), "url": url if kind == "exclusion" else normalize(url),  # a pattern, not a page
            "type": kind, "note": note, "actor": actor, **extra}
     store.put("changes", doc_id(kind, row["url"], row["date"], actor), row)
     queries.clear_cache()
@@ -117,6 +118,41 @@ async def log_fix(request: Request):
     if not url or not note or kind not in ("fix", "metadata", "publish"):
         raise HTTPException(400, "url, note and a valid type are required")
     return {"ok": True, "change": _log_change(get_store(), url, kind, note[:500], user_of(request))}
+
+
+@app.post("/api/exclusions")
+async def add_exclusion(request: Request):
+    body = await request.json()
+    pattern = (body.get("pattern") or "").strip()
+    if not pattern or pattern == "/":
+        raise HTTPException(400, "a path or pattern is required (not the home page)")
+    store = get_store()
+    entry = exclusions.add(store, pattern, bool(body.get("all_locales")), body.get("note", ""), user_of(request))
+    _log_change(store, entry["pattern"], "exclusion", f"Added to exclusion list{' (all locales)' if entry['all_locales'] else ''}"
+                f"{': ' + entry['note'] if entry['note'] else ''}", user_of(request))
+    return {"ok": True, "entry": entry}
+
+
+@app.post("/api/exclusions/remove")
+async def remove_exclusion(request: Request):
+    body = await request.json()
+    store = get_store()
+    if not exclusions.remove(store, body.get("pattern", "")):
+        raise HTTPException(404, "not on the exclusion list")
+    _log_change(store, exclusions.clean_pattern(body["pattern"]), "exclusion", "Removed from exclusion list", user_of(request))
+    return {"ok": True}
+
+
+@app.post("/api/request-indexing")
+async def request_indexing(request: Request):
+    """Records that someone requested indexing in Search Console (there is no API for it)."""
+    body = await request.json()
+    url = normalize(body.get("url", ""))
+    store = get_store()
+    if not rules.mark_gsc_requested(store, url):
+        raise HTTPException(404, "URL not in the register")
+    return {"ok": True, "change": _log_change(store, url, "request_indexing",
+                                              "Requested indexing in Google Search Console (URL Inspection)", user_of(request))}
 
 
 @app.get("/api/scorecard")

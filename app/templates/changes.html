@@ -10,7 +10,7 @@
 </form>
 <div class="period">
   <a href="/changes" class="{{ 'on' if not kind }}">all</a>
-  {% for k in ["publish", "submit", "fix", "metadata"] %}<a href="?type={{ k }}" class="{{ 'on' if kind == k }}">{{ k }}</a>{% endfor %}
+  {% for k in ["publish", "submit", "fix", "metadata", "request_indexing", "exclusion"] %}<a href="?type={{ k }}" class="{{ 'on' if kind == k }}">{{ k }}</a>{% endfor %}
 </div>
 <table class="data">
   <thead><tr><th>Date</th><th>Type</th><th>URL</th><th>Note</th><th>By</th></tr></thead>

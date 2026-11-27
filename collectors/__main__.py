@@ -16,7 +16,7 @@ import traceback
 
 from collectors import bing, clarity, gsc, indexing, webflow
 from collectors.base import Run, log
-from core import rules
+from core import exclusions, rules
 from core.store import get_store
 
 ORDER = ("webflow", "indexing", "gsc", "bing", "clarity")
@@ -24,7 +24,9 @@ ORDER = ("webflow", "indexing", "gsc", "bing", "clarity")
 
 def run_rules(store) -> dict:
     run = Run(store, "rules")
-    res = rules.sync_actions(store, rules.evaluate_index_rules(store.query("url_inventory")))
+    alerts = rules.evaluate_index_rules(store.query("url_inventory"), exclusions=exclusions.load(store),
+                                        changes=store.query("changes", [("type", "in", ["fix", "metadata", "publish"])]))
+    res = rules.sync_actions(store, alerts)
     for k, v in res.items():
         run.count(k, v)
     return run.finish()

@@ -15,6 +15,7 @@ from collections import defaultdict
 from datetime import date, datetime, timedelta, timezone
 
 from core import clusters as cl
+from core import exclusions as excl
 from core.store import Store
 
 _cache: dict[tuple, tuple[float, object]] = {}
@@ -70,6 +71,16 @@ def active_inventory(store: Store) -> list[dict]:
     return [e for e in cached(("inv",), lambda: store.query("url_inventory")) if not e.get("removed_from_sitemap")]
 
 
+def exclusion_list(store: Store) -> list[dict]:
+    return cached(("excl",), lambda: excl.load(store))
+
+
+def counted_inventory(store: Store) -> list[dict]:
+    """Active URLs minus intentional exclusions: the indexed-rate denominator."""
+    ex = exclusion_list(store)
+    return [e for e in active_inventory(store) if not excl.reason(e, ex)]
+
+
 def indexed_rate_on(store: Store, day: str | None) -> dict:
     """{engine: rate} from the index_status snapshot on `day` (or the nearest earlier snapshot)."""
     if day is None:
@@ -80,8 +91,10 @@ def indexed_rate_on(store: Store, day: str | None) -> dict:
         return {}
     snap_day = max(r["day"] for r in rows)
     out = {}
+    ex = exclusion_list(store)  # today's list applied to the old snapshot, so both rates share a denominator
     for eng in ("google", "bing"):
-        rs = [r for r in rows if r["day"] == snap_day and r["engine"] == eng]
+        rs = [r for r in rows if r["day"] == snap_day and r["engine"] == eng
+              and r.get("reason") != "noindex" and not excl.matching_entry(r["url"], ex)]
         if rs:
             out[eng] = sum(r["status"] == "indexed" for r in rs) / len(rs)
     out["day"] = snap_day
@@ -89,7 +102,7 @@ def indexed_rate_on(store: Store, day: str | None) -> dict:
 
 
 def indexed_now(store: Store) -> dict:
-    inv = active_inventory(store)
+    inv = counted_inventory(store)
     n = len(inv)
     res = {"total": n}
     for eng in ("google", "bing"):
@@ -189,32 +202,55 @@ STATUSES = ("indexed", "pending", "not_indexed", "blocked", "check_failed", "unk
 
 def coverage(store: Store) -> dict:
     """Every active sitemap URL (the register), status counts per engine, and open actions."""
+    from core.rules import google_reason  # app-only import; rules imports store, not queries
+
     now = datetime.now(timezone.utc)
     inv = active_inventory(store)
+    ex = exclusion_list(store)
     pages = []
     for e in inv:
         g, b = e.get("google") or {}, e.get("bing") or {}
         sub = b.get("submitted_at") or b.get("first_submitted_at")
         ref = sub or e.get("first_seen")
+        why_excluded = excl.reason(e, ex)
         pages.append({
             "url": e["url"], "path": e.get("path") or e["url"], "language": e.get("language") or "en",
             "first_seen": e.get("first_seen"), "next_check": e.get("next_check"),
-            "google": g.get("status", "unknown"), "google_reason": g.get("detail") or g.get("coverage"),
+            "excluded": why_excluded,
+            "google": g.get("status", "unknown"),
+            "google_reason": google_reason(g, e["url"]) if (g.get("coverage") or g.get("detail")) else None,
+            "google_inspected": g.get("inspected_at"), "gsc_requested_at": e.get("gsc_requested_at"),
             "google_last_crawl": g.get("last_crawl"),
             "bing": b.get("status", "unknown"), "bing_reason": b.get("detail"),
             "bing_last_crawl": b.get("last_crawled"),
             "submitted_at": sub,
             "days_since_submit": (now - datetime.fromisoformat(ref.replace("Z", "+00:00"))).days if ref else None,
             "precheck_problem": (e.get("precheck") or {}).get("problem"),
-            "gap": not (g.get("status") == "indexed" and b.get("status") == "indexed"),
+            "gap": not why_excluded and not (g.get("status") == "indexed" and b.get("status") == "indexed"),
         })
     pages.sort(key=lambda x: x["path"])
-    counts = {eng: {s: sum(p[eng] == s for p in pages) for s in STATUSES} for eng in ("google", "bing")}
-    actions = [a for a in store.query("actions") if a.get("status") in ("open", "in_progress")]
+    counted = [p for p in pages if not p["excluded"]]
+    counts = {eng: {s: sum(p[eng] == s for p in counted) for s in STATUSES} for eng in ("google", "bing")}
+    excluded_urls = {p["url"] for p in pages if p["excluded"]}
+    actions = []
+    for a in store.query("actions"):
+        if a.get("status") not in ("open", "in_progress") or a.get("url") in excluded_urls:
+            continue  # rows for a newly excluded URL disappear now; the next rules run closes them
+        a.setdefault("rules", [a["rule"]] if a.get("rule") else [])
+        actions.append(a)
+    inv_all = cached(("inv",), lambda: store.query("url_inventory"))
+    entries = []
+    for x in ex:
+        n = sum(1 for e in inv if excl.matching_entry(e["url"], [x]))
+        entries.append({**x, "matches": n})
     runs = [r for r in store.query("collector_runs", [("collector", "==", "indexing")]) if r.get("started")]
     last = max(runs, key=lambda r: r["started"]) if runs else {}
-    return {"total": len(pages), "counts": counts, "pages": pages,
+    return {"total": len(counted), "pages_total": len(pages), "excluded": len(pages) - len(counted),
+            "excluded_noindex": sum(1 for p in pages if p["excluded"] == "noindex (pre-check)"),
+            "removed_from_sitemap": sum(1 for e in inv_all if e.get("removed_from_sitemap")),
+            "exclusions": entries, "counts": counts, "pages": pages,
             "gaps": [p for p in pages if p["gap"]], "open_actions": actions,
+            "request_queue": [a for a in actions if "request_indexing" in a["rules"]],
             "new_last_run": (last.get("counts") or {}).get("new", 0), "last_run": last.get("started")}
 
 

@@ -43,8 +43,8 @@ class GscClient:
     def inspect(self, url: str, cap: int = config.MAX_GOOGLE_INSPECTIONS_PER_RUN) -> dict:
         """~20 s per call, occasional read timeouts: 60 s timeout, one retry, per-run cap."""
         out = {"checked_at": iso(now_utc()), "status": "unknown", "verdict": None, "coverage": None,
-               "last_crawl": None, "robots": None, "indexing_state": None, "google_canonical": None,
-               "detail": None}
+               "last_crawl": None, "robots": None, "indexing_state": None, "page_fetch": None,
+               "google_canonical": None, "user_canonical": None, "inspected_at": None, "detail": None}
         if not self.enabled:
             return out
         if self.inspections >= cap:
@@ -62,7 +62,9 @@ class GscClient:
         idx = data.get("inspectionResult", {}).get("indexStatusResult", {})
         out.update(verdict=idx.get("verdict"), coverage=idx.get("coverageState"),
                    last_crawl=idx.get("lastCrawlTime"), robots=idx.get("robotsTxtState"),
-                   indexing_state=idx.get("indexingState"), google_canonical=idx.get("googleCanonical"))
+                   indexing_state=idx.get("indexingState"), page_fetch=idx.get("pageFetchState"),
+                   google_canonical=idx.get("googleCanonical"), user_canonical=idx.get("userCanonical"),
+                   inspected_at=out["checked_at"])
         cov = (out["coverage"] or "").lower()
         if out["verdict"] == "PASS" and "indexed" in cov and "not indexed" not in cov:
             out["status"] = "indexed"

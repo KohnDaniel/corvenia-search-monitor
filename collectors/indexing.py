@@ -9,6 +9,9 @@ Per run:
      changes (submit events).
 
 Statuses per engine: pending, indexed, not_indexed, blocked, check_failed, unknown.
+Google also keeps the URL Inspection reason per URL: coverage (coverageState), verdict, robots
+(robotsTxtState), indexing_state, page_fetch (pageFetchState), google_canonical, user_canonical,
+inspected_at. core/rules.py keys the suggested fix on coverage.
 Never treat "submitted" as "indexed".
 """
 
@@ -231,7 +234,8 @@ def collect(store: Store) -> dict:
                 e["canonical"] = e["precheck"].get("canonical")
             if not e["precheck"]["ok"]:
                 prob = e["precheck"]["problem"]
-                e["google"] = {"status": "blocked", "checked_at": iso(now), "detail": prob}
+                # Keep the last URL Inspection fields (coverage, canonicals, inspected_at) for the reason column.
+                e["google"] = {**e["google"], "status": "blocked", "checked_at": iso(now), "detail": prob}
                 e["bing"] = {**e["bing"], "status": "blocked", "checked_at": iso(now), "detail": prob}
             else:
                 prev_g, prev_b = e["google"].get("status"), e["bing"].get("status")
