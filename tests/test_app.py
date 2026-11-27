@@ -110,6 +110,8 @@ def test_one_row_per_url_and_request_button(client):
     queries.clear_cache()
     page = c.get("/coverage").text
     assert page.count('class="req"') == 1 and "engine mismatch" in page and "request indexing" in page
+    assert page.count('data-tile=') == 9 and page.count('class="tip"') == 9 and 'id="drill"' in page
+    assert 'data-rules="engine_mismatch,request_indexing"' in page and '<td class="act"><button class="req"' in page
     assert c.post("/api/request-indexing", json={"url": u}).status_code == 200
     a = s.get("actions", rules.action_id(u))
     assert a["rules"] == ["engine_mismatch"] and a["status"] == "open" and s.get("url_inventory", u)["gsc_requested_at"]
